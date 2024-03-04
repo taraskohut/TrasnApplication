@@ -7,21 +7,30 @@ import {
   TouchableOpacity,
   Dimensions,
 } from 'react-native';
+import {useNavigation, NavigationProp} from '@react-navigation/native';
 import AppleIcon from '../../assets/appleIcon.tsx';
 import {BlurView} from '@react-native-community/blur';
 import LocationIcon from '../../assets/locationIcon.tsx';
 import CameraIcon from '../../assets/cameraIcon.tsx';
-import LinearGradient from 'react-native-linear-gradient';
 import MarkDownIcon from '../../assets/markDownIcon.tsx';
 import WorldIcon from '../../assets/worldIcon.tsx';
+import {MainContainerParamList} from '../mainContainer/MainContainer.tsx';
+
+type MainContainerNavigationProp = NavigationProp<MainContainerParamList>;
 
 const LoginScreen = () => {
+  const navigation = useNavigation<MainContainerNavigationProp>();
+
+  const handleSignIn = () => {
+    navigation.navigate('Main');
+  };
+
   return (
     <View style={styles.container}>
       <ImageBackground
         source={require('../../assets/login-background.png')}
         style={styles.backgroundImage}>
-        <View style={styles.languageContainer}>
+        <TouchableOpacity style={styles.languageContainer}>
           <View style={styles.languageButton}>
             <View style={styles.worldIcon}>
               <WorldIcon />
@@ -31,13 +40,15 @@ const LoginScreen = () => {
               <MarkDownIcon />
             </View>
           </View>
-        </View>
+        </TouchableOpacity>
         <BlurView blurType="chromeMaterialDark" style={styles.content}>
           <View style={styles.titleContainer}>
             <Text style={styles.welcomeText}>Welcome to</Text>
             <Text style={styles.titleText}>TranslateApp</Text>
           </View>
-          <TouchableOpacity style={styles.appleContainer}>
+          <TouchableOpacity
+            style={styles.appleContainer}
+            onPress={handleSignIn}>
             <View style={styles.appleIconContainer}>
               <AppleIcon />
             </View>
@@ -59,12 +70,6 @@ const LoginScreen = () => {
           </View>
         </View>
       </ImageBackground>
-      <LinearGradient
-        colors={['#000', 'transparent']}
-        start={{x: 0, y: 1.9}}
-        end={{x: 0, y: 0}}
-        style={styles.gradientOverlay}
-      />
     </View>
   );
 };
@@ -76,12 +81,13 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   languageContainer: {
-    marginTop: '15%',
+    marginBottom: '25%',
     flexDirection: 'row',
     padding: 5,
     borderRadius: 5,
     justifyContent: 'flex-end',
     width: '100%',
+    marginRight: '5%',
   },
   languageButton: {
     marginTop: '15%',
@@ -114,7 +120,7 @@ const styles = StyleSheet.create({
     width: '90%',
     paddingVertical: 40,
     borderRadius: 10,
-    marginTop: '85%',
+    marginTop: '80%',
     height: '30%',
   },
   titleContainer: {
