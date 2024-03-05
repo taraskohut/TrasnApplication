@@ -1,5 +1,7 @@
 import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import {createDrawerNavigator} from '@react-navigation/drawer';
+import {NavigationContainer} from '@react-navigation/native';
 import HistoryScreen from '../mainScreens/HistoryScreen.tsx';
 import PlansScreen from '../mainScreens/PlansScreen.tsx';
 import TranslateScreen from './TranslateScreen.tsx';
@@ -10,8 +12,10 @@ import PhrasesIcon from '../../assets/PhrasesIcon.tsx';
 import TranslateIcon from '../../assets/TranslateIcon.tsx';
 import ConversationScreen from './ConversationScreen.tsx';
 import MicroIcon from '../../assets/MicroIcon.tsx';
+import MenuScreen from './MenuScreen.tsx';
 
 const Tab = createBottomTabNavigator();
+// const Drawer = createDrawerNavigator();
 
 enum RouteName {
   Plans = 'Plans',
@@ -23,12 +27,16 @@ enum RouteName {
 
 const MainTabs = () => {
   return (
+    //
+
+    // <Drawer.Navigator initialRouteName={RouteName.Menu}>
+    //   <Drawer.Screen name={RouteName.Menu} component={MenuScreen} />
+    // </Drawer.Navigator>
     <Tab.Navigator initialRouteName={RouteName.Plans}>
       <Tab.Screen
         name={RouteName.Plans}
         component={PlansScreen}
         options={{
-          headerShown: false,
           tabBarIcon: ({color, size}) => (
             <TicketIcon width={size} height={size} fill={color} />
           ),
@@ -52,7 +60,6 @@ const MainTabs = () => {
           ),
         }}
       />
-
       <Tab.Screen
         name={RouteName.Phrases}
         component={PhrasesScreen}

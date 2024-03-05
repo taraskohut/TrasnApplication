@@ -1,5 +1,6 @@
 import * as React from 'react';
 import Svg, {G, Rect, Path, Defs} from 'react-native-svg';
+import {StyleSheet} from 'react-native';
 /* SVGR has dropped some elements not supported by react-native-svg: filter */
 
 function MicroIocn(props: any) {
@@ -45,4 +46,10 @@ function MicroIocn(props: any) {
   );
 }
 
+const styles = StyleSheet.create({
+  button: {
+    margin: 100,
+    color: 'red',
+  },
+});
 export default MicroIocn;
