@@ -13,6 +13,7 @@ import TranslateIcon from '../../assets/TranslateIcon.tsx';
 import ConversationScreen from './ConversationScreen.tsx';
 import MicroIcon from '../../assets/MicroIcon.tsx';
 import MenuScreen from './MenuScreen.tsx';
+import {Image, View} from 'react-native';
 
 const Tab = createBottomTabNavigator();
 // const Drawer = createDrawerNavigator();
@@ -32,6 +33,7 @@ const MainTabs = () => {
     // <Drawer.Navigator initialRouteName={RouteName.Menu}>
     //   <Drawer.Screen name={RouteName.Menu} component={MenuScreen} />
     // </Drawer.Navigator>
+
     <Tab.Navigator initialRouteName={RouteName.Plans}>
       <Tab.Screen
         name={RouteName.Plans}
@@ -52,11 +54,25 @@ const MainTabs = () => {
         }}
       />
       <Tab.Screen
-        name={RouteName.PopUp}
+        name=" "
         component={ConversationScreen}
         options={{
           tabBarIcon: ({color, size}) => (
-            <MicroIcon width={size + 100} height={size + 100} />
+            // <Image
+            //   // style={{borderWidth: 1}}
+            //   source={require('/Users/dev-comp/Documents/TranslationApp/assets/img.png')}
+            // />
+            <MicroIcon
+              width={size + 15}
+              height={size + 15}
+              style={
+                {
+                  // borderColor: 'green',
+                  // backgroundColor: '#007AFD',
+                  // borderRadius: 20,
+                }
+              }
+            />
           ),
         }}
       />

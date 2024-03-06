@@ -1,4 +1,3 @@
-import React from 'react';
 import {
   SafeAreaView,
   StyleSheet,
@@ -7,6 +6,7 @@ import {
   View,
   ScrollView,
 } from 'react-native';
+import React, {useState, useEffect} from 'react';
 import {useNavigation} from '@react-navigation/native';
 import CoinIcon from '../../assets/CoinIcon.tsx';
 import ActiveIcon from '../../assets/ActiveIcon.jsx.tsx';
@@ -16,6 +16,42 @@ import LinearGradient from 'react-native-linear-gradient';
 
 const PlansScreen = () => {
   const navigation = useNavigation();
+  const plans = [
+    {
+      open: true,
+      name: 'Personal Translator',
+      description: 'Translate Basic',
+      price: '$2.99/month',
+      color: ['#ACB4C0', '#F3F3F3'],
+      borderColor: 'grey',
+    },
+    {
+      open: false,
+      name: 'Regular Translator',
+      description: 'Translate Basic',
+      price: '$3.99/month',
+      color: ['#FFFDEB', '#E9A32B'],
+      borderColor: '#EC810A',
+    },
+    {
+      open: false,
+      name: 'Premium Translator',
+      description: 'Translate Basic',
+      price: '$4.99/month',
+      color: ['#98C7E0', '#498EB4'],
+      borderColor: '#1175AE',
+    },
+  ];
+
+  const [onOpen, setOnOpen] = useState(plans);
+  console.log(onOpen, '1111');
+  const openTranslators = index => {
+    setOnOpen(prevPlans => {
+      const updatedPlans = [...prevPlans];
+      updatedPlans[index].open = !updatedPlans[index].open;
+      return updatedPlans;
+    });
+  };
 
   const handleGoBack = () => {
     navigation.goBack();
@@ -71,70 +107,57 @@ const PlansScreen = () => {
             </Text>
           </View>
         </View>
-        <View style={styles.translateContainerPaid}>
-          <LinearGradient colors={['#ACB4C0', '#F3F3F3']}>
-            <View style={styles.PersonTransBlock}>
-              <Text style={styles.translateBasic}>Personal Translator</Text>
-              <Text style={styles.priceSum}>$2.99/month</Text>
-            </View>
-          </LinearGradient>
-          <Divider />
-          <View style={styles.checklist}>
-            <Text style={styles.checklistItem}>
-              <CheckIcon />
-              Ad Supported
-            </Text>
-            <Text style={styles.checklistItem}>
-              <CheckIcon />
-              Text Translation Only
-            </Text>
-            <Text style={styles.checklistItem}>
-              <CheckIcon />
-              Translation Model 1.0
-            </Text>
-          </View>
+        {onOpen.map((value, index) => (
           <View
             style={{
-              alignItems: 'center',
-              backgroundColor: '#007AFD',
-              marginHorizontal: 30,
-              paddingVertical: 19,
+              borderWidth: 1,
               borderRadius: 8,
-              marginBottom: 15,
+              borderColor: value.borderColor,
+              marginTop: 20,
             }}>
-            <TouchableOpacity>
-              <Text style={{color: 'white'}}>Update to this Plan</Text>
+            <TouchableOpacity onPress={() => openTranslators(index)}>
+              <LinearGradient colors={value.color}>
+                <View style={styles.PersonTransBlock}>
+                  <Text style={styles.translateBasic}>{value.name}</Text>
+                  <Text style={styles.priceSum}>{value.price}</Text>
+                </View>
+              </LinearGradient>
             </TouchableOpacity>
+            <Divider />
+
+            {value.open && (
+              <>
+                <View style={styles.checklist}>
+                  <Text style={styles.checklistItem}>
+                    <CheckIcon />
+                    Ad Supported
+                  </Text>
+                  <Text style={styles.checklistItem}>
+                    <CheckIcon />
+                    Text Translation Only
+                  </Text>
+                  <Text style={styles.checklistItem}>
+                    <CheckIcon />
+                    Translation Model 1.0
+                  </Text>
+                </View>
+                <View
+                  style={{
+                    alignItems: 'center',
+                    backgroundColor: '#007AFD',
+                    marginHorizontal: 30,
+                    paddingVertical: 19,
+                    borderRadius: 8,
+                    marginBottom: 15,
+                  }}>
+                  <TouchableOpacity>
+                    <Text style={{color: 'white'}}>Update to this Plan</Text>
+                  </TouchableOpacity>
+                </View>
+              </>
+            )}
           </View>
-        </View>
-        <View
-          style={{
-            borderWidth: 1,
-            borderRadius: 8,
-            borderColor: '#EC810A',
-            marginTop: 20,
-          }}>
-          <LinearGradient colors={['#FFFDEB', '#E9A32B']}>
-            <View style={styles.PersonTransBlock}>
-              <Text style={styles.translateBasic}>Regular Translator</Text>
-              <Text style={styles.priceSum}>$3.99/month</Text>
-            </View>
-          </LinearGradient>
-        </View>
-        <View
-          style={{
-            borderWidth: 1,
-            borderRadius: 8,
-            borderColor: '#1175AE',
-            marginTop: 20,
-          }}>
-          <LinearGradient colors={['#98C7E0', '#498EB4']}>
-            <View style={styles.PersonTransBlock}>
-              <Text style={styles.translateBasic}>Premium Translator</Text>
-              <Text style={styles.priceSum}>$4.99/month</Text>
-            </View>
-          </LinearGradient>
-        </View>
+        ))}
       </ScrollView>
     </SafeAreaView>
   );
