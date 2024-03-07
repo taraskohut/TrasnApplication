@@ -1,12 +1,13 @@
 import React, {FC} from 'react';
 import MainContainer from './src/mainContainer/MainContainer.tsx';
 import {NavigationContainer} from '@react-navigation/native';
+import {SafeAreaProvider} from 'react-native-safe-area-context';
 
 const App: FC = (): React.JSX.Element => {
   return (
-    <NavigationContainer>
+    <SafeAreaProvider>
       <MainContainer />
-    </NavigationContainer>
+    </SafeAreaProvider>
   );
 };
 
