@@ -58,108 +58,110 @@ const PlansScreen = () => {
   };
 
   return (
-    <SafeAreaView style={styles.container}>
-      <TouchableOpacity onPress={handleGoBack}>
-        <Text>Go Back</Text>
-      </TouchableOpacity>
-      <Text style={styles.header}>Buy Credits</Text>
-      <ScrollView>
-        <View style={styles.creditBlock}>
-          <View style={styles.block}>
-            <CoinIcon />
-            <Text style={styles.amount}>100</Text>
-            <Text style={styles.price}>$2.00</Text>
-          </View>
-          <View style={styles.block}>
-            <CoinIcon />
-            <Text style={styles.amount}>500</Text>
-            <Text style={styles.price}>$5.00</Text>
-          </View>
-          <View style={styles.block}>
-            <CoinIcon />
-            <Text style={styles.amount}>2500</Text>
-            <Text style={styles.price}>$10.00</Text>
-          </View>
-        </View>
-        <View style={styles.translateContainer}>
-          <View style={styles.row}>
-            <View style={styles.freeAndText}>
-              <View style={styles.free}>
-                <Text style={styles.freeText}>FREE</Text>
-              </View>
-              <Text style={styles.translateBasic}>Translate Basic</Text>
+    <>
+      <SafeAreaView style={styles.container}>
+        <TouchableOpacity onPress={handleGoBack}>
+          <Text>Go Back</Text>
+        </TouchableOpacity>
+        <Text style={styles.header}>Buy Credits</Text>
+        <ScrollView>
+          <View style={styles.creditBlock}>
+            <View style={styles.block}>
+              <CoinIcon />
+              <Text style={styles.amount}>100</Text>
+              <Text style={styles.price}>$2.00</Text>
             </View>
-            <ActiveIcon />
+            <View style={styles.block}>
+              <CoinIcon />
+              <Text style={styles.amount}>500</Text>
+              <Text style={styles.price}>$5.00</Text>
+            </View>
+            <View style={styles.block}>
+              <CoinIcon />
+              <Text style={styles.amount}>2500</Text>
+              <Text style={styles.price}>$10.00</Text>
+            </View>
           </View>
-          <Divider style={styles.divider} />
-          <View style={styles.checklist}>
-            <Text style={styles.checklistItem}>
-              <CheckIcon />
-              Ad Supported
-            </Text>
-            <Text style={styles.checklistItem}>
-              <CheckIcon />
-              Text Translation Only
-            </Text>
-            <Text style={styles.checklistItem}>
-              <CheckIcon />
-              Translation Model 1.0
-            </Text>
-          </View>
-        </View>
-        {onOpen.map((value, index) => (
-          <View
-            style={{
-              borderWidth: 1,
-              borderRadius: 8,
-              borderColor: value.borderColor,
-              marginTop: 20,
-            }}>
-            <TouchableOpacity onPress={() => openTranslators(index)}>
-              <LinearGradient colors={value.color}>
-                <View style={styles.PersonTransBlock}>
-                  <Text style={styles.translateBasic}>{value.name}</Text>
-                  <Text style={styles.priceSum}>{value.price}</Text>
+          <View style={styles.translateContainer}>
+            <View style={styles.row}>
+              <View style={styles.freeAndText}>
+                <View style={styles.free}>
+                  <Text style={styles.freeText}>FREE</Text>
                 </View>
-              </LinearGradient>
-            </TouchableOpacity>
-            <Divider />
+                <Text style={styles.translateBasic}>Translate Basic</Text>
+              </View>
+              <ActiveIcon />
+            </View>
+            <Divider style={styles.divider} />
+            <View style={styles.checklist}>
+              <Text style={styles.checklistItem}>
+                <CheckIcon />
+                Ad Supported
+              </Text>
+              <Text style={styles.checklistItem}>
+                <CheckIcon />
+                Text Translation Only
+              </Text>
+              <Text style={styles.checklistItem}>
+                <CheckIcon />
+                Translation Model 1.0
+              </Text>
+            </View>
+          </View>
+          {onOpen.map((value, index) => (
+            <View
+              style={{
+                borderWidth: 1,
+                borderRadius: 8,
+                borderColor: value.borderColor,
+                marginTop: 20,
+              }}>
+              <TouchableOpacity onPress={() => openTranslators(index)}>
+                <LinearGradient colors={value.color}>
+                  <View style={styles.PersonTransBlock}>
+                    <Text style={styles.translateBasic}>{value.name}</Text>
+                    <Text style={styles.priceSum}>{value.price}</Text>
+                  </View>
+                </LinearGradient>
+              </TouchableOpacity>
+              <Divider />
 
-            {value.open && (
-              <>
-                <View style={styles.checklist}>
-                  <Text style={styles.checklistItem}>
-                    <CheckIcon />
-                    Ad Supported
-                  </Text>
-                  <Text style={styles.checklistItem}>
-                    <CheckIcon />
-                    Text Translation Only
-                  </Text>
-                  <Text style={styles.checklistItem}>
-                    <CheckIcon />
-                    Translation Model 1.0
-                  </Text>
-                </View>
-                <View
-                  style={{
-                    alignItems: 'center',
-                    backgroundColor: '#007AFD',
-                    marginHorizontal: 30,
-                    paddingVertical: 19,
-                    borderRadius: 8,
-                    marginBottom: 15,
-                  }}>
-                  <TouchableOpacity>
-                    <Text style={{color: 'white'}}>Update to this Plan</Text>
-                  </TouchableOpacity>
-                </View>
-              </>
-            )}
-          </View>
-        ))}
-      </ScrollView>
-    </SafeAreaView>
+              {value.open && (
+                <>
+                  <View style={styles.checklist}>
+                    <Text style={styles.checklistItem}>
+                      <CheckIcon />
+                      Ad Supported
+                    </Text>
+                    <Text style={styles.checklistItem}>
+                      <CheckIcon />
+                      Text Translation Only
+                    </Text>
+                    <Text style={styles.checklistItem}>
+                      <CheckIcon />
+                      Translation Model 1.0
+                    </Text>
+                  </View>
+                  <View
+                    style={{
+                      alignItems: 'center',
+                      backgroundColor: '#007AFD',
+                      marginHorizontal: 30,
+                      paddingVertical: 19,
+                      borderRadius: 8,
+                      marginBottom: 15,
+                    }}>
+                    <TouchableOpacity>
+                      <Text style={{color: 'white'}}>Update to this Plan</Text>
+                    </TouchableOpacity>
+                  </View>
+                </>
+              )}
+            </View>
+          ))}
+        </ScrollView>
+      </SafeAreaView>
+    </>
   );
 };
 

@@ -14,9 +14,10 @@ import ConversationScreen from './ConversationScreen.tsx';
 import MicroIcon from '../../assets/MicroIcon.tsx';
 import MenuScreen from './MenuScreen.tsx';
 import {Image, View} from 'react-native';
+import 'react-native-gesture-handler';
 
 const Tab = createBottomTabNavigator();
-// const Drawer = createDrawerNavigator();
+const Drawer = createDrawerNavigator();
 
 enum RouteName {
   Plans = 'Plans',
@@ -25,20 +26,14 @@ enum RouteName {
   History = 'History',
   PopUp = 'PopUp',
 }
-
 const MainTabs = () => {
   return (
-    //
-
-    // <Drawer.Navigator initialRouteName={RouteName.Menu}>
-    //   <Drawer.Screen name={RouteName.Menu} component={MenuScreen} />
-    // </Drawer.Navigator>
-
     <Tab.Navigator initialRouteName={RouteName.Plans}>
       <Tab.Screen
         name={RouteName.Plans}
         component={PlansScreen}
         options={{
+          headerShown: false,
           tabBarIcon: ({color, size}) => (
             <TicketIcon width={size} height={size} fill={color} />
           ),
@@ -48,31 +43,22 @@ const MainTabs = () => {
         name={RouteName.Translate}
         component={TranslateScreen}
         options={{
+          headerShown: false,
           tabBarIcon: ({color, size}) => (
             <TranslateIcon width={size} height={size} />
           ),
+        }}
+        initialParams={{
+          Translate: 'Translate',
         }}
       />
       <Tab.Screen
         name=" "
         component={ConversationScreen}
         options={{
+          headerShown: false,
           tabBarIcon: ({color, size}) => (
-            // <Image
-            //   // style={{borderWidth: 1}}
-            //   source={require('/Users/dev-comp/Documents/TranslationApp/assets/img.png')}
-            // />
-            <MicroIcon
-              width={size + 15}
-              height={size + 15}
-              style={
-                {
-                  // borderColor: 'green',
-                  // backgroundColor: '#007AFD',
-                  // borderRadius: 20,
-                }
-              }
-            />
+            <MicroIcon width={size + 15} height={size + 15} />
           ),
         }}
       />
@@ -80,6 +66,7 @@ const MainTabs = () => {
         name={RouteName.Phrases}
         component={PhrasesScreen}
         options={{
+          headerShown: false,
           tabBarIcon: ({color, size}) => (
             <PhrasesIcon width={size} height={size} />
           ),
@@ -89,6 +76,7 @@ const MainTabs = () => {
         name={RouteName.History}
         component={HistoryScreen}
         options={{
+          headerShown: false,
           tabBarIcon: ({color, size}) => (
             <HistoryIcon width={size} height={size} fill={color} />
           ),
@@ -97,5 +85,17 @@ const MainTabs = () => {
     </Tab.Navigator>
   );
 };
+
+// const DrawerNavigator = () => {
+//   return (
+//     <Drawer.Navigator>
+//       <Drawer.Screen name="Plans" component={MainTabs} />
+//     </Drawer.Navigator>
+//   );
+// };
+//
+// const AppNavigator = () => {
+//   return <DrawerNavigator />;
+// };
 
 export default MainTabs;

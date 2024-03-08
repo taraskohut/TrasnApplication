@@ -24,14 +24,14 @@ const MainContainer = () => {
         />
         <Stack.Screen
           name="Main"
-          component={MainTabs}
-          options={{headerShown: false}}
-        />
-        <Stack.Screen
-          name="Menu"
           component={MenuScreen}
           options={{headerShown: false}}
         />
+        {/*<Stack.Screen*/}
+        {/*  name="Main"*/}
+        {/*  component={MenuScreen}*/}
+        {/*  options={{headerShown: false}}*/}
+        {/*/>*/}
       </Stack.Navigator>
     </NavigationContainer>
   );
