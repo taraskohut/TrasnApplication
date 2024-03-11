@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import {View, StyleSheet, Image, Text, TouchableOpacity} from 'react-native';
 import {
   createDrawerNavigator,
@@ -37,15 +37,34 @@ const MenuScreen = () => {
         drawerStyle: {
           backgroundColor: '#fff',
         },
-      }}
-      drawerContent={DrawerHeaderContent}>
+      }}>
       <Drawer.Screen
         name="Plans"
+        initialParams={{params: 'Plans'}}
         component={MainTabs}
         options={{headerShown: true, drawerLabel: 'Plans'}}
       />
-      <Drawer.Screen name="Translate" component={TranslateScreen} />
+      <Drawer.Screen
+        name="Translate"
+        initialParams={{params: 'Translate'}}
+        component={MainTabs}
+        options={{headerShown: true, drawerLabel: 'Translate'}}
+      />
+      2
+      <Drawer.Screen
+        name="Pharses"
+        initialParams={{params: 'Phrases'}}
+        component={MainTabs}
+        options={{headerShown: true, drawerLabel: 'Phrases'}}
+      />
+      <Drawer.Screen
+        name="History"
+        initialParams={{params: 'History'}}
+        component={MainTabs}
+        options={{headerShown: true, drawerLabel: 'History'}}
+      />
     </Drawer.Navigator>
   );
 };
+
 export default MenuScreen;

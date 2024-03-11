@@ -13,7 +13,7 @@ function MicroIcon(props: any) {
         borderRadius: 40,
         padding: 10,
         borderWidth: 7,
-        borderColor: '#EBF0F6',
+        borderColor: props.borderColor,
         marginBottom: 20,
       }}>
       <Svg

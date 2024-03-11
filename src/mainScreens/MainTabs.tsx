@@ -1,6 +1,6 @@
 import React from 'react';
+import {TouchableOpacity, Text} from 'react-native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import {createDrawerNavigator} from '@react-navigation/drawer';
 import {NavigationContainer} from '@react-navigation/native';
 import HistoryScreen from '../mainScreens/HistoryScreen.tsx';
 import PlansScreen from '../mainScreens/PlansScreen.tsx';
@@ -12,12 +12,10 @@ import PhrasesIcon from '../../assets/PhrasesIcon.tsx';
 import TranslateIcon from '../../assets/TranslateIcon.tsx';
 import ConversationScreen from './ConversationScreen.tsx';
 import MicroIcon from '../../assets/MicroIcon.tsx';
-import MenuScreen from './MenuScreen.tsx';
 import {Image, View} from 'react-native';
-import 'react-native-gesture-handler';
+import {useNavigation} from '@react-navigation/native';
 
 const Tab = createBottomTabNavigator();
-const Drawer = createDrawerNavigator();
 
 enum RouteName {
   Plans = 'Plans',
@@ -26,14 +24,26 @@ enum RouteName {
   History = 'History',
   PopUp = 'PopUp',
 }
+
 const MainTabs = () => {
+  const navigation = useNavigation();
+
   return (
     <Tab.Navigator initialRouteName={RouteName.Plans}>
       <Tab.Screen
         name={RouteName.Plans}
         component={PlansScreen}
         options={{
-          headerShown: false,
+          headerLeft: () => {
+            return (
+              <TouchableOpacity
+                style={{paddingLeft: 10}}
+                onPress={() => navigation.openDrawer()}>
+                <Text>lala</Text>
+              </TouchableOpacity>
+            );
+          },
+          headerShown: true,
           tabBarIcon: ({color, size}) => (
             <TicketIcon width={size} height={size} fill={color} />
           ),
@@ -43,7 +53,16 @@ const MainTabs = () => {
         name={RouteName.Translate}
         component={TranslateScreen}
         options={{
-          headerShown: false,
+          headerLeft: () => {
+            return (
+              <TouchableOpacity
+                style={{paddingLeft: 10}}
+                onPress={() => navigation.openDrawer()}>
+                <Text>lala</Text>
+              </TouchableOpacity>
+            );
+          },
+          headerShown: true,
           tabBarIcon: ({color, size}) => (
             <TranslateIcon width={size} height={size} />
           ),
@@ -56,9 +75,22 @@ const MainTabs = () => {
         name=" "
         component={ConversationScreen}
         options={{
-          headerShown: false,
+          headerLeft: () => {
+            return (
+              <TouchableOpacity
+                style={{paddingLeft: 10}}
+                onPress={() => navigation.openDrawer()}>
+                <Text>lala</Text>
+              </TouchableOpacity>
+            );
+          },
+          headerShown: true,
           tabBarIcon: ({color, size}) => (
-            <MicroIcon width={size + 15} height={size + 15} />
+            <MicroIcon
+              width={size + 15}
+              height={size + 15}
+              borderColor={'#EBF0F6'}
+            />
           ),
         }}
       />
@@ -66,7 +98,16 @@ const MainTabs = () => {
         name={RouteName.Phrases}
         component={PhrasesScreen}
         options={{
-          headerShown: false,
+          headerLeft: () => {
+            return (
+              <TouchableOpacity
+                style={{paddingLeft: 10}}
+                onPress={() => navigation.openDrawer()}>
+                <Text>lala</Text>
+              </TouchableOpacity>
+            );
+          },
+          headerShown: true,
           tabBarIcon: ({color, size}) => (
             <PhrasesIcon width={size} height={size} />
           ),
@@ -76,7 +117,16 @@ const MainTabs = () => {
         name={RouteName.History}
         component={HistoryScreen}
         options={{
-          headerShown: false,
+          headerLeft: () => {
+            return (
+              <TouchableOpacity
+                style={{paddingLeft: 10}}
+                onPress={() => navigation.openDrawer()}>
+                <Text>lala</Text>
+              </TouchableOpacity>
+            );
+          },
+          headerShown: true,
           tabBarIcon: ({color, size}) => (
             <HistoryIcon width={size} height={size} fill={color} />
           ),
@@ -85,17 +135,5 @@ const MainTabs = () => {
     </Tab.Navigator>
   );
 };
-
-// const DrawerNavigator = () => {
-//   return (
-//     <Drawer.Navigator>
-//       <Drawer.Screen name="Plans" component={MainTabs} />
-//     </Drawer.Navigator>
-//   );
-// };
-//
-// const AppNavigator = () => {
-//   return <DrawerNavigator />;
-// };
 
 export default MainTabs;

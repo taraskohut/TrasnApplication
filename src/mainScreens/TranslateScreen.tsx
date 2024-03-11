@@ -16,6 +16,7 @@ import DialogeIcon from '../../assets/DialogeIcon.tsx';
 import CopyIcon from '../../assets/CopyIcon.tsx';
 import FlagIcon from '../../assets/FlagIcon.tsx';
 import SoundIcon from '../../assets/SoundIcon.tsx';
+import {useNavigation} from '@react-navigation/native';
 
 const TranslateScreen = () => {
   const [selectedLanguage, setSelectedLanguage] = useState('English');
@@ -24,7 +25,7 @@ const TranslateScreen = () => {
   const toggleLanguages = () => {
     setSelectedLanguage(selectedLanguage === 'English' ? 'Italian' : 'English');
   };
-
+  const navigation = useNavigation();
   return (
     <View style={styles.mainContainer}>
       <Text>Translate Screen</Text>
@@ -32,7 +33,10 @@ const TranslateScreen = () => {
         <View style={styles.languageBlock}>
           <View style={{flexDirection: 'row', alignItems: 'center'}}>
             {selectedLanguage === 'English' ? (
-              <EngIcon style={{marginRight: 8}} />
+              <TouchableOpacity
+                onPress={() => navigation.navigate('Language Selection')}>
+                <EngIcon style={{marginRight: 8}} />
+              </TouchableOpacity>
             ) : (
               <ItIcons style={{marginRight: 8}} />
             )}
@@ -46,7 +50,10 @@ const TranslateScreen = () => {
           </TouchableOpacity>
           <View style={{flexDirection: 'row', alignItems: 'center'}}>
             {selectedLanguage === 'English' ? (
-              <ItIcons style={{marginRight: 8}} />
+              <TouchableOpacity
+                onPress={() => navigation.navigate('Language Selection')}>
+                <ItIcons style={{marginRight: 8}} />
+              </TouchableOpacity>
             ) : (
               <EngIcon style={{marginRight: 8}} />
             )}
@@ -81,7 +88,10 @@ const TranslateScreen = () => {
           <View style={styles.miniBlock}>
             <View style={{flexDirection: 'row'}}>
               <PhotoIcon style={{marginRight: 20}} />
-              <DialogeIcon />
+              <TouchableOpacity
+                onPress={() => navigation.navigate('Conversationn')}>
+                <DialogeIcon />
+              </TouchableOpacity>
             </View>
             <View style={{flexDirection: 'row'}}>
               <CopyIcon style={{marginRight: 20}} />
