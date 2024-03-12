@@ -2,6 +2,7 @@ import * as React from 'react';
 import Svg, {Path} from 'react-native-svg';
 
 function SoundIcon(props) {
+  const style = {...props};
   return (
     <Svg
       width={21}

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useRef} from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import LoginScreen from '../loginScreen/LoginScreen.tsx';
 import MainTabs from '../mainScreens/MainTabs.tsx';
@@ -8,6 +8,8 @@ import TestScreen from '../mainScreens/TestScreen.tsx';
 import 'react-native-gesture-handler';
 import {NavigationContainer} from '@react-navigation/native';
 import ConversationSpeek from '../addtionalScreens/ConversationSpeek.tsx';
+import ReportPopUp from '../addtionalScreens/ReportPopUp.tsx';
+import BottomSheet from '@gorhom/bottom-sheet';
 export type MainContainerParamList = {
   LoginScreen: undefined;
   Main: undefined;
@@ -17,6 +19,7 @@ export type MainContainerParamList = {
 const Stack = createNativeStackNavigator<MainContainerParamList>();
 
 const MainContainer = () => {
+  const bottomSheetRef = useRef<BottomSheet>(null);
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="LoginScreen">
@@ -37,6 +40,7 @@ const MainContainer = () => {
         {/*/>*/}
         <Stack.Screen name="Language Selection" component={TestScreen} />
         <Stack.Screen name="Conversationn" component={ConversationSpeek} />
+        {/*<Stack.Screen name="Report" component={ReportPopUp} />*/}
       </Stack.Navigator>
     </NavigationContainer>
   );

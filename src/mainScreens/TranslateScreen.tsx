@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useRef} from 'react';
 import {
   StyleSheet,
   Text,
@@ -17,91 +17,100 @@ import CopyIcon from '../../assets/CopyIcon.tsx';
 import FlagIcon from '../../assets/FlagIcon.tsx';
 import SoundIcon from '../../assets/SoundIcon.tsx';
 import {useNavigation} from '@react-navigation/native';
+import {GestureHandlerRootView} from 'react-native-gesture-handler';
+import BottomSheet, {BottomSheetModalProvider} from '@gorhom/bottom-sheet';
+import ReportPopUp from '../addtionalScreens/ReportPopUp.tsx';
 
 const TranslateScreen = () => {
+  const handleOpenPress = () => bottomSheetRef.current?.expand();
   const [selectedLanguage, setSelectedLanguage] = useState('English');
   const [text, setText] = useState('');
-
+  const bottomSheetRef = useRef<BottomSheet>(null);
   const toggleLanguages = () => {
     setSelectedLanguage(selectedLanguage === 'English' ? 'Italian' : 'English');
   };
   const navigation = useNavigation();
   return (
-    <View style={styles.mainContainer}>
-      <Text>Translate Screen</Text>
-      <View style={styles.translateContainer}>
-        <View style={styles.languageBlock}>
-          <View style={{flexDirection: 'row', alignItems: 'center'}}>
-            {selectedLanguage === 'English' ? (
-              <TouchableOpacity
-                onPress={() => navigation.navigate('Language Selection')}>
-                <EngIcon style={{marginRight: 8}} />
-              </TouchableOpacity>
-            ) : (
-              <ItIcons style={{marginRight: 8}} />
-            )}
-            {/*<EngIcon style={{marginRight: 8}} />*/}
-            <Text>{selectedLanguage}</Text>
-          </View>
-          <TouchableOpacity onPress={toggleLanguages}>
-            <View>
-              <ArrowIcon />
-            </View>
-          </TouchableOpacity>
-          <View style={{flexDirection: 'row', alignItems: 'center'}}>
-            {selectedLanguage === 'English' ? (
-              <TouchableOpacity
-                onPress={() => navigation.navigate('Language Selection')}>
+    <BottomSheetModalProvider style={{flex: 1}}>
+      <View style={styles.mainContainer}>
+        <Text>Translate Screen</Text>
+        <View style={styles.translateContainer}>
+          <View style={styles.languageBlock}>
+            <View style={{flexDirection: 'row', alignItems: 'center'}}>
+              {selectedLanguage === 'English' ? (
+                <TouchableOpacity
+                  onPress={() => navigation.navigate('Language Selection')}>
+                  <EngIcon style={{marginRight: 8}} />
+                </TouchableOpacity>
+              ) : (
                 <ItIcons style={{marginRight: 8}} />
-              </TouchableOpacity>
-            ) : (
-              <EngIcon style={{marginRight: 8}} />
-            )}
-            {/*<ItIcons style={{marginRight: 8}} />*/}
-            <Text>
-              {selectedLanguage === 'English' ? 'Italian' : 'English'}
-            </Text>
-          </View>
-        </View>
-        <View>
-          <Divider style={styles.divider} />
-        </View>
-        <View style={[styles.textBlock, {flex: 0.8}]}>
-          <Text style={{color: '#1A1E2B', marginBottom: 10}}>
-            {selectedLanguage}
-          </Text>
-          <TextInput
-            style={styles.input}
-            multiline={true}
-            placeholder="Enter Your Text..."
-            onChangeText={setText}
-          />
-        </View>
-        <Divider style={styles.divider} />
-        <View style={[styles.translationBlock, {flex: 0.8}]}>
-          <View style={styles.row}>
-            <Text>
-              {selectedLanguage === 'English' ? 'Italian' : 'English'}
-            </Text>
-            <HeartIcon />
-          </View>
-          <View style={styles.miniBlock}>
-            <View style={{flexDirection: 'row'}}>
-              <PhotoIcon style={{marginRight: 20}} />
-              <TouchableOpacity
-                onPress={() => navigation.navigate('Conversationn')}>
-                <DialogeIcon />
-              </TouchableOpacity>
+              )}
+              {/*<EngIcon style={{marginRight: 8}} />*/}
+              <Text>{selectedLanguage}</Text>
             </View>
-            <View style={{flexDirection: 'row'}}>
-              <CopyIcon style={{marginRight: 20}} />
-              <FlagIcon style={{marginRight: 20}} />
-              <SoundIcon />
+            <TouchableOpacity onPress={toggleLanguages}>
+              <View>
+                <ArrowIcon />
+              </View>
+            </TouchableOpacity>
+            <View style={{flexDirection: 'row', alignItems: 'center'}}>
+              {selectedLanguage === 'English' ? (
+                <TouchableOpacity
+                  onPress={() => navigation.navigate('Language Selection')}>
+                  <ItIcons style={{marginRight: 8}} />
+                </TouchableOpacity>
+              ) : (
+                <EngIcon style={{marginRight: 8}} />
+              )}
+              {/*<ItIcons style={{marginRight: 8}} />*/}
+              <Text>
+                {selectedLanguage === 'English' ? 'Italian' : 'English'}
+              </Text>
+            </View>
+          </View>
+          <View>
+            <Divider style={styles.divider} />
+          </View>
+          <View style={[styles.textBlock, {flex: 0.8}]}>
+            <Text style={{color: '#1A1E2B', marginBottom: 10}}>
+              {selectedLanguage}
+            </Text>
+            <TextInput
+              style={styles.input}
+              multiline={true}
+              placeholder="Enter Your Text..."
+              onChangeText={setText}
+            />
+          </View>
+          <Divider style={styles.divider} />
+          <View style={[styles.translationBlock, {flex: 0.8}]}>
+            <View style={styles.row}>
+              <Text>
+                {selectedLanguage === 'English' ? 'Italian' : 'English'}
+              </Text>
+              <HeartIcon />
+            </View>
+            <View style={styles.miniBlock}>
+              <View style={{flexDirection: 'row'}}>
+                <PhotoIcon style={{marginRight: 20}} />
+                <TouchableOpacity
+                  onPress={() => navigation.navigate('Conversationn')}>
+                  <DialogeIcon />
+                </TouchableOpacity>
+              </View>
+              <View style={{flexDirection: 'row'}}>
+                <CopyIcon style={{marginRight: 20}} />
+                <TouchableOpacity onPress={handleOpenPress}>
+                  <FlagIcon style={{marginRight: 20}} />
+                </TouchableOpacity>
+                <SoundIcon />
+              </View>
             </View>
           </View>
         </View>
       </View>
-    </View>
+      <ReportPopUp bottomSheetRef={bottomSheetRef} />
+    </BottomSheetModalProvider>
   );
 };
 

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useRef} from 'react';
 import {TouchableOpacity, Text} from 'react-native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {NavigationContainer} from '@react-navigation/native';
@@ -14,6 +14,9 @@ import ConversationScreen from './ConversationScreen.tsx';
 import MicroIcon from '../../assets/MicroIcon.tsx';
 import {Image, View} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
+import {BottomSheetComponent} from 'react-native-elements';
+import BottomSheet from '@gorhom/bottom-sheet';
+import ReportPopUp from '../addtionalScreens/ReportPopUp.tsx';
 
 const Tab = createBottomTabNavigator();
 

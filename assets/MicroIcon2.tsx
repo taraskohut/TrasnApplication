@@ -2,8 +2,10 @@ import * as React from 'react';
 import Svg, {Path} from 'react-native-svg';
 
 function MicroIcon2(props) {
+  const style = {...props};
   return (
     <Svg
+      style={style}
       width={18}
       height={22}
       viewBox="0 0 18 22"
@@ -12,7 +14,7 @@ function MicroIcon2(props) {
       {...props}>
       <Path
         d="M9 20.98v-3.16M9 13.829a4.068 4.068 0 01-4.062-4.08V5.06a4.061 4.061 0 018.123 0V9.75A4.07 4.07 0 019 13.829z"
-        stroke="#fff"
+        stroke={style.color}
         strokeWidth={1.5}
         strokeMiterlimit={10}
         strokeLinecap="round"
@@ -20,7 +22,7 @@ function MicroIcon2(props) {
       />
       <Path
         d="M17 9.781a8.019 8.019 0 01-8 8.039A8.02 8.02 0 011 9.78M11.069 5.736h1.99M10.07 9.073h2.99"
-        stroke="#fff"
+        stroke={style.color}
         strokeWidth={1.5}
         strokeMiterlimit={10}
         strokeLinecap="round"

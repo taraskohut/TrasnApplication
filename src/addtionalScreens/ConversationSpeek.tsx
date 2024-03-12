@@ -145,7 +145,7 @@ const ConversationSpeek = () => {
               flexDirection: 'row',
               marginBottom: 15,
             }}>
-            <MicroIcon2 />
+            <MicroIcon2 color={'white'} />
             <Text style={{color: 'white', marginLeft: 15, fontSize: 16}}>
               Speak Now
             </Text>
