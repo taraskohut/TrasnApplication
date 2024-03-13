@@ -1,67 +1,75 @@
 import React from 'react';
-import {View, StyleSheet, Image, Text, TouchableOpacity} from 'react-native';
-import {
-  createDrawerNavigator,
-  DrawerContentScrollView,
-  DrawerItemList,
-} from '@react-navigation/drawer';
-
+import {createDrawerNavigator} from '@react-navigation/drawer';
+import {Dimensions, View} from 'react-native';
 import MainTabs from './MainTabs.tsx';
-import PlansScreen from './PlansScreen.tsx';
-import TranslateScreen from './TranslateScreen.tsx';
-
+import TicketIcon from '../../assets/TicketIcon.tsx';
+import TranslateIcon from '../../assets/TranslateIcon.tsx';
+import PhrasesIcon from '../../assets/PhrasesIcon.tsx';
+import HistoryIcon from '../../assets/HistoryIcon.tsx';
+import CustomDrawer from '../addtionalScreens/CustomDrawer.tsx';
 const Drawer = createDrawerNavigator();
 
 const MenuScreen = () => {
-  const DrawerHeaderContent = props => {
-    return (
-      <DrawerContentScrollView contentContainerStyle={{flex: 1}}>
-        <View
-          style={{
-            backgroundColor: '#4f4f4f',
-            height: 100,
-            justifyContent: 'center',
-            alignItems: 'center',
-            top: -5,
-          }}>
-          <Text style={{color: '#fff'}}>Test</Text>
-        </View>
-        <DrawerItemList {...props} />
-      </DrawerContentScrollView>
-    );
-  };
-
   return (
     <Drawer.Navigator
+      drawerContent={props => <CustomDrawer {...props} />}
       screenOptions={{
+        headerShown: false,
+        drawerActiveBackgroundColor: '#007AFD',
+        drawerActiveTintColor: '#fff',
         drawerStyle: {
-          backgroundColor: '#fff',
+          width: Dimensions.get('window').width / 1.15,
+        },
+        drawerLabelStyle: {
+          marginLeft: -25,
         },
       }}>
       <Drawer.Screen
-        name="Plans"
+        name={'Plans'}
         initialParams={{params: 'Plans'}}
         component={MainTabs}
-        options={{headerShown: true, drawerLabel: 'Plans'}}
+        options={{
+          title: 'Plans',
+          drawerIcon: ({focused, color, size}) => (
+            <TicketIcon focused={focused ? 'white' : 'black'} />
+          ),
+        }}
       />
+
       <Drawer.Screen
-        name="Translate"
+        name={'Translate'}
         initialParams={{params: 'Translate'}}
         component={MainTabs}
-        options={{headerShown: true, drawerLabel: 'Translate'}}
+        options={{
+          title: 'Translate',
+          drawerIcon: ({focused, color, size}) => (
+            <TranslateIcon focused={focused ? 'white' : 'black'} />
+          ),
+        }}
       />
-      2
+
       <Drawer.Screen
-        name="Pharses"
+        name={'Phrases'}
         initialParams={{params: 'Phrases'}}
         component={MainTabs}
-        options={{headerShown: true, drawerLabel: 'Phrases'}}
+        options={{
+          title: 'Phrases',
+          drawerIcon: ({focused, color, size}) => (
+            <PhrasesIcon focused={focused ? 'white' : 'black'} />
+          ),
+        }}
       />
+
       <Drawer.Screen
-        name="History"
+        name={'History'}
         initialParams={{params: 'History'}}
         component={MainTabs}
-        options={{headerShown: true, drawerLabel: 'History'}}
+        options={{
+          title: 'History',
+          drawerIcon: ({focused, color, size}) => (
+            <HistoryIcon focused={focused ? 'white' : 'black'} />
+          ),
+        }}
       />
     </Drawer.Navigator>
   );

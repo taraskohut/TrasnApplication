@@ -67,17 +67,17 @@ const PlansScreen = () => {
         <ScrollView>
           <View style={styles.creditBlock}>
             <View style={styles.block}>
-              <CoinIcon />
+              <CoinIcon size={28} />
               <Text style={styles.amount}>100</Text>
               <Text style={styles.price}>$2.00</Text>
             </View>
             <View style={styles.block}>
-              <CoinIcon />
+              <CoinIcon size={28} />
               <Text style={styles.amount}>500</Text>
               <Text style={styles.price}>$5.00</Text>
             </View>
             <View style={styles.block}>
-              <CoinIcon />
+              <CoinIcon size={28} />
               <Text style={styles.amount}>2500</Text>
               <Text style={styles.price}>$10.00</Text>
             </View>

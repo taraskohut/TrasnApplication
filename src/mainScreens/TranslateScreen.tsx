@@ -43,7 +43,10 @@ const TranslateScreen = () => {
                   <EngIcon style={{marginRight: 8}} />
                 </TouchableOpacity>
               ) : (
-                <ItIcons style={{marginRight: 8}} />
+                <TouchableOpacity
+                  onPress={() => navigation.navigate('Language Selection')}>
+                  <ItIcons style={{marginRight: 8}} />
+                </TouchableOpacity>
               )}
               {/*<EngIcon style={{marginRight: 8}} />*/}
               <Text>{selectedLanguage}</Text>
@@ -60,7 +63,10 @@ const TranslateScreen = () => {
                   <ItIcons style={{marginRight: 8}} />
                 </TouchableOpacity>
               ) : (
-                <EngIcon style={{marginRight: 8}} />
+                <TouchableOpacity
+                  onPress={() => navigation.navigate('Language Selection')}>
+                  <EngIcon style={{marginRight: 8}} />
+                </TouchableOpacity>
               )}
               {/*<ItIcons style={{marginRight: 8}} />*/}
               <Text>

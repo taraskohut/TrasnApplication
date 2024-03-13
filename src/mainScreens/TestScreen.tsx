@@ -10,7 +10,7 @@ import ToLang from '../addtionalScreens/ToLang.tsx';
 
 const Tab = createMaterialTopTabNavigator();
 
-const TestScreen = () => {
+const LanguageSelection = () => {
   return (
     <Tab.Navigator>
       <Tab.Screen name="From" component={FromLang} />
@@ -19,4 +19,4 @@ const TestScreen = () => {
   );
 };
 
-export default TestScreen;
+export default LanguageSelection;

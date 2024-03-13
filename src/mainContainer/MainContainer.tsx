@@ -10,9 +10,10 @@ import {NavigationContainer} from '@react-navigation/native';
 import ConversationSpeek from '../addtionalScreens/ConversationSpeek.tsx';
 import ReportPopUp from '../addtionalScreens/ReportPopUp.tsx';
 import BottomSheet from '@gorhom/bottom-sheet';
+import {SafeAreaProvider} from 'react-native-safe-area-context';
 export type MainContainerParamList = {
   LoginScreen: undefined;
-  Main: undefined;
+
   Menu: undefined;
 };
 
@@ -30,17 +31,11 @@ const MainContainer = () => {
         />
         <Stack.Screen
           name="Main"
-          component={MainTabs}
+          component={MenuScreen}
           options={{headerShown: false}}
         />
-        {/*<Stack.Screen*/}
-        {/*  name="Main"*/}
-        {/*  component={MainTabs}*/}
-        {/*  options={{headerShown: false}}*/}
-        {/*/>*/}
         <Stack.Screen name="Language Selection" component={TestScreen} />
         <Stack.Screen name="Conversationn" component={ConversationSpeek} />
-        {/*<Stack.Screen name="Report" component={ReportPopUp} />*/}
       </Stack.Navigator>
     </NavigationContainer>
   );

@@ -2,10 +2,11 @@ import * as React from 'react';
 import Svg, {Path} from 'react-native-svg';
 
 function CoinIcon(props) {
+  const style = {...props};
   return (
     <Svg
-      width={29}
-      height={28}
+      width={style.size}
+      height={style.size}
       viewBox="0 0 29 28"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"

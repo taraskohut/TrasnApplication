@@ -1,88 +1,85 @@
-import React, {useRef} from 'react';
-import {TouchableOpacity, Text} from 'react-native';
-import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import {NavigationContainer} from '@react-navigation/native';
-import HistoryScreen from '../mainScreens/HistoryScreen.tsx';
-import PlansScreen from '../mainScreens/PlansScreen.tsx';
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable react/no-unstable-nested-components */
+/* eslint-disable prettier/prettier */
+import React from 'react';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+
+import Icon from 'react-native-vector-icons/Ionicons';
+import { Platform, StyleSheet, Text, TouchableOpacity } from 'react-native';
+
+import { useNavigation } from '@react-navigation/native';
+import PlansScreen from './PlansScreen.tsx';
 import TranslateScreen from './TranslateScreen.tsx';
+import HistoryScreen from './HistoryScreen.tsx';
 import PhrasesScreen from './PhrasesScreen.tsx';
 import TicketIcon from '../../assets/TicketIcon.tsx';
-import HistoryIcon from '../../assets/HistoryIcon.tsx';
-import PhrasesIcon from '../../assets/PhrasesIcon.tsx';
 import TranslateIcon from '../../assets/TranslateIcon.tsx';
-import ConversationScreen from './ConversationScreen.tsx';
+import PhrasesIcon from '../../assets/PhrasesIcon.tsx';
+import HistoryIcon from '../../assets/HistoryIcon.tsx';
 import MicroIcon from '../../assets/MicroIcon.tsx';
-import {Image, View} from 'react-native';
-import {useNavigation} from '@react-navigation/native';
-import {BottomSheetComponent} from 'react-native-elements';
-import BottomSheet from '@gorhom/bottom-sheet';
-import ReportPopUp from '../addtionalScreens/ReportPopUp.tsx';
+import conversationScreen from './ConversationScreen.tsx';
+import BurgerIcon from '../../assets/BurgerIcon.tsx';
+Icon.loadFont();
 
 const Tab = createBottomTabNavigator();
 
-enum RouteName {
-  Plans = 'Plans',
-  Translate = 'Translate',
-  Phrases = 'Phrases',
-  History = 'History',
-  PopUp = 'PopUp',
-}
-
-const MainTabs = () => {
+function MainTabs(props) {
   const navigation = useNavigation();
-
+  console.log('navigation', props);
   return (
-    <Tab.Navigator initialRouteName={RouteName.Plans}>
-      <Tab.Screen
-        name={RouteName.Plans}
-        component={PlansScreen}
-        options={{
-          headerLeft: () => {
-            return (
-              <TouchableOpacity
-                style={{paddingLeft: 10}}
-                onPress={() => navigation.openDrawer()}>
-                <Text>lala</Text>
-              </TouchableOpacity>
-            );
-          },
-          headerShown: true,
-          tabBarIcon: ({color, size}) => (
-            <TicketIcon width={size} height={size} fill={color} />
-          ),
-        }}
-      />
-      <Tab.Screen
-        name={RouteName.Translate}
-        component={TranslateScreen}
-        options={{
-          headerLeft: () => {
-            return (
-              <TouchableOpacity
-                style={{paddingLeft: 10}}
-                onPress={() => navigation.openDrawer()}>
-                <Text>lala</Text>
-              </TouchableOpacity>
-            );
-          },
-          headerShown: true,
-          tabBarIcon: ({color, size}) => (
-            <TranslateIcon width={size} height={size} />
-          ),
-        }}
-        initialParams={{
-          Translate: 'Translate',
-        }}
-      />
+    <Tab.Navigator
+      initialRouteName={props.route && props.route.params && props.route.params.params ? props.route.params.params : 'Plans'}
+      screenOptions={({ route }) => ({
+        tabBarIcon: ({ color, size, focused }) => {
+          let iconComponent;
+          if (route.name === 'Plans') {
+            iconComponent = focused ? <TicketIcon focused={'#007AFD'} /> : <TicketIcon focused={'grey'} />;
+          } else if (route.name === 'Translate') {
+            iconComponent = focused ? <TranslateIcon focused={'#007AFD'} /> : <TranslateIcon focused={'grey'} />;
+          } else if (route.name === 'Phrases') {
+            iconComponent = focused ? <PhrasesIcon focused={'#007AFD'}/> : <PhrasesIcon focused={'grey'} />;
+          } else if (route.name === 'History') {
+            iconComponent = focused ? <HistoryIcon focused={'#007AFD'} /> : <HistoryIcon focused={'grey'} />;
+          }
+          return iconComponent;
+        },
+      })}
+    >
+      <Tab.Screen name="Plans" component={PlansScreen} options={{
+        tabBarLabel:'Plans',
+        title:'Plans',
+        headerShown:true,
+
+        headerLeft:() =>{
+          return (
+            <TouchableOpacity style={{paddingLeft:10}} onPress={() => navigation.openDrawer()}>
+              <BurgerIcon />
+            </TouchableOpacity>
+          );
+        },
+      }} />
+      <Tab.Screen name="Translate" component={TranslateScreen} options={{
+        tabBarLabel:'Translate',
+        title:'Translate',
+        headerShown:true,
+
+        headerLeft:() =>{
+          return (
+            <TouchableOpacity style={{paddingLeft:10}} onPress={() => navigation.openDrawer()}>
+              <BurgerIcon/>
+            </TouchableOpacity>
+          );
+        },
+      }} />
       <Tab.Screen
         name=" "
-        component={ConversationScreen}
+        component={conversationScreen}
         options={{
           headerLeft: () => {
             return (
               <TouchableOpacity
                 style={{paddingLeft: 10}}
-                onPress={() => navigation.openDrawer()}>
+                >
                 <Text>lala</Text>
               </TouchableOpacity>
             );
@@ -97,46 +94,47 @@ const MainTabs = () => {
           ),
         }}
       />
-      <Tab.Screen
-        name={RouteName.Phrases}
-        component={PhrasesScreen}
-        options={{
-          headerLeft: () => {
-            return (
-              <TouchableOpacity
-                style={{paddingLeft: 10}}
-                onPress={() => navigation.openDrawer()}>
-                <Text>lala</Text>
-              </TouchableOpacity>
-            );
-          },
-          headerShown: true,
-          tabBarIcon: ({color, size}) => (
-            <PhrasesIcon width={size} height={size} />
-          ),
-        }}
-      />
-      <Tab.Screen
-        name={RouteName.History}
-        component={HistoryScreen}
-        options={{
-          headerLeft: () => {
-            return (
-              <TouchableOpacity
-                style={{paddingLeft: 10}}
-                onPress={() => navigation.openDrawer()}>
-                <Text>lala</Text>
-              </TouchableOpacity>
-            );
-          },
-          headerShown: true,
-          tabBarIcon: ({color, size}) => (
-            <HistoryIcon width={size} height={size} fill={color} />
-          ),
-        }}
-      />
+      <Tab.Screen name="Phrases" component={PhrasesScreen} options={{
+        tabBarLabel:'Phrases',
+        title:'Phrases',
+        headerShown:true,
+
+        headerLeft:() =>{
+          return (
+            <TouchableOpacity style={{paddingLeft:10}} onPress={() => navigation.openDrawer()}>
+              <BurgerIcon/>
+            </TouchableOpacity>
+          );
+        },
+      }} />
+      <Tab.Screen name="History" component={HistoryScreen}  options={{
+        tabBarLabel: 'History',
+        title:'History',
+        headerShown:true,
+
+        headerLeft:() =>{
+          return (
+            <TouchableOpacity style={{paddingLeft:10}} onPress={() => navigation.openDrawer()}>
+              <BurgerIcon/>
+            </TouchableOpacity>
+          );
+        },
+      }} />
     </Tab.Navigator>
   );
-};
-
+}
 export default MainTabs;
+
+const styles = StyleSheet.create({
+
+  tabBarStyle:{
+    backgroundColor:'transparent',
+    position:'absolute',
+    borderTopWidth:0,
+    bottom:15,
+    right:0,
+    left:0,
+    height:55,
+  },
+
+});
