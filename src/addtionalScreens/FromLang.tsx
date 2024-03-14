@@ -5,20 +5,23 @@ import PenIcon from '../../assets/PenIcon.tsx';
 import ItIcons from '../../assets/ItIcons.tsx';
 import SoundIcon from '../../assets/SoundIcon.tsx';
 import DownLoadIcon from '../../assets/DownLoadIcon.tsx';
+import {useTheme} from '@react-navigation/native';
 
 const FromLang = () => {
   const [selectedLang, setSelectedLang] = useState('');
-
+  const {colors} = useTheme();
+  console.log('aaaaaa', colors);
   return (
-    <View style={{marginHorizontal: 20}}>
+    <View style={{paddingHorizontal: 20, backgroundColor: colors.themeColor}}>
       <View
         style={{
           marginVertical: 20,
-          backgroundColor: selectedLang === 'recent' ? '#007AFD' : 'white',
+          backgroundColor: colors.blocks,
           borderRadius: 15,
         }}>
         <Text
           style={{
+            color: colors.white,
             paddingHorizontal: 10,
             paddingTop: 15,
             paddingBottom: 5,
@@ -40,7 +43,9 @@ const FromLang = () => {
           }}>
           <View style={{flexDirection: 'row', alignItems: 'center'}}>
             <EngIcon style={{marginRight: 10}} />
-            <Text style={{fontSize: 16}}>English (US)</Text>
+            <Text style={{fontSize: 16, color: colors.white}}>
+              English (US)
+            </Text>
           </View>
           <View>
             <DownLoadIcon />
@@ -68,7 +73,7 @@ const FromLang = () => {
               alignItems: 'center',
             }}>
             <ItIcons style={{marginRight: 10}} />
-            <Text style={{fontSize: 16}}>Italian</Text>
+            <Text style={{fontSize: 16, color: colors.white}}>Italian</Text>
           </View>
           <View>
             <DownLoadIcon />
@@ -95,7 +100,7 @@ const FromLang = () => {
               alignItems: 'center',
             }}>
             <ItIcons style={{marginRight: 10}} />
-            <Text style={{fontSize: 16}}>German</Text>
+            <Text style={{fontSize: 16, color: colors.white}}>German</Text>
           </View>
           <View>
             <DownLoadIcon />
@@ -122,17 +127,18 @@ const FromLang = () => {
               alignItems: 'center',
             }}>
             <ItIcons style={{marginRight: 10}} />
-            <Text style={{fontSize: 16}}>English(UK)</Text>
+            <Text style={{fontSize: 16, color: colors.white}}>English(UK)</Text>
           </View>
           <View>
             <DownLoadIcon />
           </View>
         </TouchableOpacity>
       </View>
+
       <View
         style={{
           marginVertical: 15,
-          backgroundColor: selectedLang === 'all' ? '#007AFD' : 'white',
+          backgroundColor: colors.blocks,
           borderRadius: 15,
         }}>
         <Text
@@ -142,9 +148,11 @@ const FromLang = () => {
             paddingBottom: 5,
             fontSize: 15,
             fontWeight: 'bold',
+            color: colors.white,
           }}>
           All Language
         </Text>
+
         <TouchableOpacity
           onPress={() => setSelectedLang('english')}
           style={{
@@ -158,7 +166,9 @@ const FromLang = () => {
           }}>
           <View style={{flexDirection: 'row', alignItems: 'center'}}>
             <EngIcon style={{marginRight: 10}} />
-            <Text style={{fontSize: 16}}>English (US)</Text>
+            <Text style={{fontSize: 16, color: colors.white}}>
+              English (US)
+            </Text>
           </View>
           <View>
             <DownLoadIcon />
@@ -186,7 +196,9 @@ const FromLang = () => {
               alignItems: 'center',
             }}>
             <ItIcons style={{marginRight: 10}} />
-            <Text style={{fontSize: 16}}>English (Nigeria)</Text>
+            <Text style={{fontSize: 16, color: colors.white}}>
+              English (Nigeria)
+            </Text>
           </View>
           <View>
             <DownLoadIcon />
@@ -213,7 +225,7 @@ const FromLang = () => {
               alignItems: 'center',
             }}>
             <ItIcons style={{marginRight: 10}} />
-            <Text style={{fontSize: 16}}>Italian</Text>
+            <Text style={{fontSize: 16, color: colors.white}}>Italian</Text>
           </View>
           <View>
             <DownLoadIcon />
@@ -240,7 +252,7 @@ const FromLang = () => {
               alignItems: 'center',
             }}>
             <ItIcons style={{marginRight: 10}} />
-            <Text style={{fontSize: 16}}>German</Text>
+            <Text style={{fontSize: 16, color: colors.white}}>German</Text>
           </View>
           <View>
             <DownLoadIcon />

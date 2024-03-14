@@ -8,8 +8,11 @@ import ItIcons from '../../assets/ItIcons.tsx';
 import EngIcon from '../../assets/EngIcon.tsx';
 import SoundIcon from '../../assets/SoundIcon.tsx';
 import MicroIcon2 from '../../assets/MicroIcon2.tsx';
+import {useTheme} from '@react-navigation/native';
+import {color} from 'react-native-elements/dist/helpers';
 
 const CustomPhrase = ({bottomSheetRef}) => {
+  const {colors} = useTheme();
   const snapPoints = useMemo(() => ['80%'], []);
   const renderBackdrop = useCallback(
     (props: any) => (
@@ -25,7 +28,7 @@ const CustomPhrase = ({bottomSheetRef}) => {
 
   return (
     <BottomSheet
-      backgroundStyle={{backgroundColor: '#EBF0F6'}}
+      backgroundStyle={{backgroundColor: colors.popUpBack}}
       backdropComponent={renderBackdrop}
       ref={bottomSheetRef}
       index={0}
@@ -38,6 +41,7 @@ const CustomPhrase = ({bottomSheetRef}) => {
             marginBottom: 20,
             fontWeight: 'bold',
             marginHorizontal: 20,
+            color: colors.white,
           }}>
           Add Custom Phrase
         </Text>
@@ -52,11 +56,13 @@ const CustomPhrase = ({bottomSheetRef}) => {
               alignItems: 'center',
             }}>
             <EngIcon />
-            <Text style={{marginLeft: 10, fontSize: 16}}>English</Text>
+            <Text style={{marginLeft: 10, fontSize: 16, color: colors.white}}>
+              English
+            </Text>
           </View>
           <View
             style={{
-              backgroundColor: 'white',
+              backgroundColor: colors.blocks,
               marginTop: 10,
               borderRadius: 8,
               paddingHorizontal: 10,
@@ -69,6 +75,7 @@ const CustomPhrase = ({bottomSheetRef}) => {
                 borderRadius: 8,
               }}
               multiline={true}
+              placeholderTextColor={colors.phraseText}
               placeholder={'Enter your text...'}
             />
           </View>
@@ -85,21 +92,22 @@ const CustomPhrase = ({bottomSheetRef}) => {
               alignItems: 'center',
             }}>
             <ItIcons />
-            <Text style={{marginLeft: 10, fontSize: 16}}>Italian</Text>
+            <Text style={{marginLeft: 10, fontSize: 16, color: colors.white}}>
+              Italian
+            </Text>
           </View>
           <View
             style={{
-              backgroundColor: '#F2F4F9',
+              backgroundColor: colors.popUpTransBack,
               marginTop: 10,
               borderRadius: 8,
               paddingHorizontal: 10,
               borderWidth: 1,
-              borderColor: '#D8E3F0',
+              borderColor: colors.popUpTransBack,
             }}>
             <Text
               style={{
                 fontSize: 16,
-
                 height: 80,
                 borderRadius: 8,
               }}
@@ -114,7 +122,7 @@ const CustomPhrase = ({bottomSheetRef}) => {
           }}>
           <View
             style={{
-              backgroundColor: 'white',
+              backgroundColor: colors.blocks,
               padding: 15,
               paddingVertical: 15,
               borderRadius: 70,
@@ -124,7 +132,7 @@ const CustomPhrase = ({bottomSheetRef}) => {
           <View
             style={{
               marginLeft: 30,
-              backgroundColor: 'white',
+              backgroundColor: colors.blocks,
               padding: 15,
               paddingVertical: 15,
               borderRadius: 60,
@@ -135,7 +143,7 @@ const CustomPhrase = ({bottomSheetRef}) => {
       </View>
       <View
         style={{
-          backgroundColor: 'white',
+          backgroundColor: colors.blocks,
           flexDirection: 'row',
           justifyContent: 'space-between',
           paddingHorizontal: 20,

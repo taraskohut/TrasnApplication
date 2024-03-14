@@ -16,7 +16,7 @@ import DialogeIcon from '../../assets/DialogeIcon.tsx';
 import CopyIcon from '../../assets/CopyIcon.tsx';
 import FlagIcon from '../../assets/FlagIcon.tsx';
 import SoundIcon from '../../assets/SoundIcon.tsx';
-import {useNavigation} from '@react-navigation/native';
+import {useNavigation, useTheme} from '@react-navigation/native';
 import {GestureHandlerRootView} from 'react-native-gesture-handler';
 import BottomSheet, {BottomSheetModalProvider} from '@gorhom/bottom-sheet';
 import ReportPopUp from '../addtionalScreens/ReportPopUp.tsx';
@@ -30,13 +30,23 @@ const TranslateScreen = () => {
     setSelectedLanguage(selectedLanguage === 'English' ? 'Italian' : 'English');
   };
   const navigation = useNavigation();
+  const {colors} = useTheme();
   return (
     <BottomSheetModalProvider style={{flex: 1}}>
-      <View style={styles.mainContainer}>
+      <View
+        style={{...styles.mainContainer, backgroundColor: colors.themeColor}}>
         <Text>Translate Screen</Text>
         <View style={styles.translateContainer}>
-          <View style={styles.languageBlock}>
-            <View style={{flexDirection: 'row', alignItems: 'center'}}>
+          <View
+            style={{
+              ...styles.languageBlock,
+              backgroundColor: colors.blocks,
+            }}>
+            <View
+              style={{
+                flexDirection: 'row',
+                alignItems: 'center',
+              }}>
               {selectedLanguage === 'English' ? (
                 <TouchableOpacity
                   onPress={() => navigation.navigate('Language Selection')}>
@@ -49,12 +59,10 @@ const TranslateScreen = () => {
                 </TouchableOpacity>
               )}
               {/*<EngIcon style={{marginRight: 8}} />*/}
-              <Text>{selectedLanguage}</Text>
+              <Text style={{color: colors.white}}>{selectedLanguage}</Text>
             </View>
             <TouchableOpacity onPress={toggleLanguages}>
-              <View>
-                <ArrowIcon />
-              </View>
+              <ArrowIcon />
             </TouchableOpacity>
             <View style={{flexDirection: 'row', alignItems: 'center'}}>
               {selectedLanguage === 'English' ? (
@@ -69,7 +77,7 @@ const TranslateScreen = () => {
                 </TouchableOpacity>
               )}
               {/*<ItIcons style={{marginRight: 8}} />*/}
-              <Text>
+              <Text style={{color: colors.white}}>
                 {selectedLanguage === 'English' ? 'Italian' : 'English'}
               </Text>
             </View>
@@ -77,26 +85,31 @@ const TranslateScreen = () => {
           <View>
             <Divider style={styles.divider} />
           </View>
-          <View style={[styles.textBlock, {flex: 0.8}]}>
-            <Text style={{color: '#1A1E2B', marginBottom: 10}}>
+          <View style={{...styles.textBlock, backgroundColor: colors.blocks}}>
+            <Text style={{color: colors.white, marginBottom: 10}}>
               {selectedLanguage}
             </Text>
             <TextInput
-              style={styles.input}
+              style={{...styles.input, color: colors.white}}
               multiline={true}
+              placeholderTextColor={colors.white}
               placeholder="Enter Your Text..."
               onChangeText={setText}
             />
           </View>
           <Divider style={styles.divider} />
-          <View style={[styles.translationBlock, {flex: 0.8}]}>
+          <View
+            style={{
+              ...styles.translationBlock,
+              backgroundColor: colors.itBlock,
+            }}>
             <View style={styles.row}>
-              <Text>
+              <Text style={{color: colors.white}}>
                 {selectedLanguage === 'English' ? 'Italian' : 'English'}
               </Text>
               <HeartIcon />
             </View>
-            <View style={styles.miniBlock}>
+            <View style={{...styles.miniBlock, backgroundColor: colors.blocks}}>
               <View style={{flexDirection: 'row'}}>
                 <PhotoIcon style={{marginRight: 20}} />
                 <TouchableOpacity
@@ -143,6 +156,7 @@ const styles = StyleSheet.create({
     borderBottomStartRadius: 16,
     flexDirection: 'column',
     justifyContent: 'space-between',
+    flex: 0.8,
   },
   input: {
     fontSize: 24,
@@ -150,21 +164,25 @@ const styles = StyleSheet.create({
     height: '80%',
   },
   textBlock: {
-    marginHorizontal: 30,
-    marginTop: 10,
+    paddingHorizontal: 30,
+    paddingTop: 10,
+    flex: 0.6,
   },
   divider: {
     backgroundColor: 'black',
   },
   mainContainer: {
-    flex: 0.9,
-    marginHorizontal: 10,
+    flex: 1,
+    paddingBottom: '20%',
+    paddingHorizontal: 10,
   },
   languageBlock: {
-    marginHorizontal: 30,
-    marginVertical: 15,
+    paddingHorizontal: 30,
+    paddingVertical: 15,
     flexDirection: 'row',
     justifyContent: 'space-between',
+    borderTopStartRadius: 16,
+    borderTopEndRadius: 16,
   },
   translateContainer: {
     flex: 1,

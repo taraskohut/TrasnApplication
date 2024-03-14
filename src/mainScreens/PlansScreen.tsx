@@ -7,7 +7,7 @@ import {
   ScrollView,
 } from 'react-native';
 import React, {useState, useEffect} from 'react';
-import {useNavigation} from '@react-navigation/native';
+import {useNavigation, useTheme} from '@react-navigation/native';
 import CoinIcon from '../../assets/CoinIcon.tsx';
 import ActiveIcon from '../../assets/ActiveIcon.jsx.tsx';
 import {Divider} from 'react-native-elements';
@@ -15,6 +15,8 @@ import CheckIcon from '../../assets/CheckIcon.tsx';
 import LinearGradient from 'react-native-linear-gradient';
 
 const PlansScreen = () => {
+  const {colors} = useTheme();
+  console.log('colors', colors);
   const navigation = useNavigation();
   const plans = [
     {
@@ -59,51 +61,58 @@ const PlansScreen = () => {
 
   return (
     <>
-      <SafeAreaView style={styles.container}>
+      <SafeAreaView
+        style={{...styles.container, backgroundColor: colors.themeColor}}>
         <TouchableOpacity onPress={handleGoBack}>
           <Text>Go Back</Text>
         </TouchableOpacity>
-        <Text style={styles.header}>Buy Credits</Text>
+        <Text style={{...styles.header, color: colors.white}}>Buy Credits</Text>
         <ScrollView>
           <View style={styles.creditBlock}>
-            <View style={styles.block}>
+            <View style={{...styles.block, backgroundColor: colors.blocks}}>
               <CoinIcon size={28} />
-              <Text style={styles.amount}>100</Text>
-              <Text style={styles.price}>$2.00</Text>
+              <Text style={{...styles.amount, color: colors.white}}>100</Text>
+              <Text style={{...styles.price, color: colors.white}}>$2.00</Text>
             </View>
-            <View style={styles.block}>
+            <View style={{...styles.block, backgroundColor: colors.blocks}}>
               <CoinIcon size={28} />
-              <Text style={styles.amount}>500</Text>
-              <Text style={styles.price}>$5.00</Text>
+              <Text style={{...styles.amount, color: colors.white}}>500</Text>
+              <Text style={{...styles.price, color: colors.white}}>$5.00</Text>
             </View>
-            <View style={styles.block}>
+            <View style={{...styles.block, backgroundColor: colors.blocks}}>
               <CoinIcon size={28} />
-              <Text style={styles.amount}>2500</Text>
-              <Text style={styles.price}>$10.00</Text>
+              <Text style={{...styles.amount, color: colors.white}}>2500</Text>
+              <Text style={{...styles.price, color: colors.white}}>$10.00</Text>
             </View>
           </View>
-          <View style={styles.translateContainer}>
+          <View
+            style={{
+              ...styles.translateContainer,
+              backgroundColor: colors.blocks,
+            }}>
             <View style={styles.row}>
               <View style={styles.freeAndText}>
                 <View style={styles.free}>
                   <Text style={styles.freeText}>FREE</Text>
                 </View>
-                <Text style={styles.translateBasic}>Translate Basic</Text>
+                <Text style={{...styles.translateBasic, color: colors.white}}>
+                  Translate Basic
+                </Text>
               </View>
               <ActiveIcon />
             </View>
             <Divider style={styles.divider} />
             <View style={styles.checklist}>
-              <Text style={styles.checklistItem}>
-                <CheckIcon />
+              <Text style={{...styles.checklistItem, color: colors.white}}>
+                <CheckIcon color={colors.icon} />
                 Ad Supported
               </Text>
-              <Text style={styles.checklistItem}>
-                <CheckIcon />
+              <Text style={{...styles.checklistItem, color: colors.white}}>
+                <CheckIcon color={colors.icon} />
                 Text Translation Only
               </Text>
-              <Text style={styles.checklistItem}>
-                <CheckIcon />
+              <Text style={{...styles.checklistItem, color: colors.white}}>
+                <CheckIcon color={colors.icon} />
                 Translation Model 1.0
               </Text>
             </View>
@@ -115,6 +124,7 @@ const PlansScreen = () => {
                 borderRadius: 8,
                 borderColor: value.borderColor,
                 marginTop: 20,
+                backgroundColor: colors.block,
               }}>
               <TouchableOpacity onPress={() => openTranslators(index)}>
                 <LinearGradient colors={value.color}>
@@ -129,16 +139,19 @@ const PlansScreen = () => {
               {value.open && (
                 <>
                   <View style={styles.checklist}>
-                    <Text style={styles.checklistItem}>
-                      <CheckIcon />
+                    <Text
+                      style={{...styles.checklistItem, color: colors.white}}>
+                      <CheckIcon color={colors.icon} />
                       Ad Supported
                     </Text>
-                    <Text style={styles.checklistItem}>
-                      <CheckIcon />
+                    <Text
+                      style={{...styles.checklistItem, color: colors.white}}>
+                      <CheckIcon color={colors.icon} />
                       Text Translation Only
                     </Text>
-                    <Text style={styles.checklistItem}>
-                      <CheckIcon />
+                    <Text
+                      style={{...styles.checklistItem, color: colors.white}}>
+                      <CheckIcon color={colors.icon} />
                       Translation Model 1.0
                     </Text>
                   </View>
@@ -186,7 +199,8 @@ const styles = StyleSheet.create({
   },
   container: {
     flex: 1,
-    marginHorizontal: 20,
+    paddingHorizontal: 20,
+    // backgroundColor: colors.gray,
   },
   header: {
     fontSize: 20,

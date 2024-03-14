@@ -13,23 +13,29 @@ import TechnologyIcon from '../../assets/TechnologyIcon.tsx';
 import HeartIcon from '../../assets/HeartIcon.tsx';
 import BottomSheet, {BottomSheetModalProvider} from '@gorhom/bottom-sheet';
 import CustomPhrase from '../addtionalScreens/CustomPhrase.tsx';
+import {useTheme} from '@react-navigation/native';
 
 const PhrasesScreen = () => {
   const handleOpenPress = () => bottomSheetRef.current?.expand();
   const bottomSheetRef = useRef<BottomSheet>(null);
+  const {colors} = useTheme();
 
   return (
     <BottomSheetModalProvider>
       <View>
         <ScrollView>
-          <View style={{marginHorizontal: 20}}>
+          <View
+            style={{paddingHorizontal: 20, backgroundColor: colors.themeColor}}>
             <View
               style={{
                 flexDirection: 'row',
                 justifyContent: 'space-between',
                 marginTop: 20,
               }}>
-              <Text style={{fontSize: 20, fontWeight: 'bold'}}>My Phrases</Text>
+              <Text
+                style={{fontSize: 20, fontWeight: 'bold', color: colors.white}}>
+                My Phrases
+              </Text>
               <TouchableOpacity onPress={handleOpenPress}>
                 <View
                   style={{
@@ -59,10 +65,20 @@ const PhrasesScreen = () => {
                   justifyContent: 'space-between',
                   paddingVertical: 13,
                   paddingHorizontal: 10,
+                  backgroundColor: colors.blocks,
                 }}>
-                <View style={{flexDirection: 'row', alignItems: 'center'}}>
+                <View
+                  style={{
+                    flexDirection: 'row',
+                    alignItems: 'center',
+                  }}>
                   <EngIcon style={{marginRight: 10}} />
-                  <Text style={{fontSize: 20, fontWeight: 'bold'}}>
+                  <Text
+                    style={{
+                      fontSize: 20,
+                      fontWeight: 'bold',
+                      color: colors.white,
+                    }}>
                     I am Daniel
                   </Text>
                 </View>
@@ -73,7 +89,7 @@ const PhrasesScreen = () => {
 
               <View
                 style={{
-                  backgroundColor: '#F7F8FB',
+                  backgroundColor: colors.phraseTranslate,
                   borderTopWidth: 1,
                   borderTopColor: '#E5E6E8',
                   flexDirection: 'row',
@@ -90,7 +106,9 @@ const PhrasesScreen = () => {
                     alignItems: 'center',
                   }}>
                   <ItIcons style={{marginRight: 10}} />
-                  <Text style={{fontSize: 20}}>lo sono Daniel</Text>
+                  <Text style={{fontSize: 20, color: colors.phraseText}}>
+                    lo sono Daniel
+                  </Text>
                 </View>
                 <View>
                   <SoundIcon />
@@ -110,10 +128,20 @@ const PhrasesScreen = () => {
                   justifyContent: 'space-between',
                   paddingVertical: 13,
                   paddingHorizontal: 10,
+                  backgroundColor: colors.blocks,
                 }}>
-                <View style={{flexDirection: 'row', alignItems: 'center'}}>
+                <View
+                  style={{
+                    flexDirection: 'row',
+                    alignItems: 'center',
+                  }}>
                   <EngIcon style={{marginRight: 10}} />
-                  <Text style={{fontSize: 20, fontWeight: 'bold'}}>
+                  <Text
+                    style={{
+                      fontSize: 20,
+                      fontWeight: 'bold',
+                      color: colors.white,
+                    }}>
                     I am Daniel
                   </Text>
                 </View>
@@ -124,7 +152,7 @@ const PhrasesScreen = () => {
 
               <View
                 style={{
-                  backgroundColor: '#F7F8FB',
+                  backgroundColor: colors.phraseTranslate,
                   borderTopWidth: 1,
                   borderTopColor: '#E5E6E8',
                   flexDirection: 'row',
@@ -141,7 +169,9 @@ const PhrasesScreen = () => {
                     alignItems: 'center',
                   }}>
                   <ItIcons style={{marginRight: 10}} />
-                  <Text style={{fontSize: 20}}>lo sono Daniel</Text>
+                  <Text style={{fontSize: 20, color: colors.phraseText}}>
+                    lo sono Daniel
+                  </Text>
                 </View>
                 <View>
                   <SoundIcon />
@@ -153,6 +183,7 @@ const PhrasesScreen = () => {
                 marginVertical: 15,
                 backgroundColor: 'white',
                 borderRadius: 5,
+                backgroundColor: colors.blocks,
               }}>
               <View
                 style={{
@@ -164,7 +195,12 @@ const PhrasesScreen = () => {
                 }}>
                 <View style={{flexDirection: 'row', alignItems: 'center'}}>
                   <EngIcon style={{marginRight: 10}} />
-                  <Text style={{fontSize: 20, fontWeight: 'bold'}}>
+                  <Text
+                    style={{
+                      fontSize: 20,
+                      fontWeight: 'bold',
+                      color: colors.white,
+                    }}>
                     I am Daniel
                   </Text>
                 </View>
@@ -175,7 +211,7 @@ const PhrasesScreen = () => {
 
               <View
                 style={{
-                  backgroundColor: '#F7F8FB',
+                  backgroundColor: colors.phraseTranslate,
                   borderTopWidth: 1,
                   borderTopColor: '#E5E6E8',
                   flexDirection: 'row',
@@ -192,7 +228,9 @@ const PhrasesScreen = () => {
                     alignItems: 'center',
                   }}>
                   <ItIcons style={{marginRight: 10}} />
-                  <Text style={{fontSize: 20}}>lo sono Daniel</Text>
+                  <Text style={{fontSize: 20, color: colors.phraseText}}>
+                    lo sono Daniel
+                  </Text>
                 </View>
                 <View>
                   <SoundIcon />
@@ -200,8 +238,12 @@ const PhrasesScreen = () => {
               </View>
             </View>
           </View>
-          <View style={{backgroundColor: 'white', paddingHorizontal: 20}}>
-            <Text style={{fontSize: 20, fontWeight: 'bold'}}>Categories</Text>
+          <View
+            style={{backgroundColor: colors.categBack, paddingHorizontal: 20}}>
+            <Text
+              style={{fontSize: 20, fontWeight: 'bold', color: colors.white}}>
+              Categories
+            </Text>
             <View style={{marginTop: 20}}>
               <View
                 style={{
@@ -227,9 +269,7 @@ const PhrasesScreen = () => {
               </View>
               <View
                 style={{
-                  backgroundColor: '#EBF0F6',
-                  borderBottomStartRadius: 8,
-                  borderBottomEndRadius: 8,
+                  backgroundColor: colors.greetBack,
                 }}>
                 <View
                   style={{
@@ -249,10 +289,16 @@ const PhrasesScreen = () => {
                       justifyContent: 'space-between',
                       paddingVertical: 13,
                       paddingHorizontal: 10,
+                      backgroundColor: colors.blocks,
                     }}>
                     <View style={{flexDirection: 'row', alignItems: 'center'}}>
                       <EngIcon style={{marginRight: 10}} />
-                      <Text style={{fontSize: 20, fontWeight: 'bold'}}>
+                      <Text
+                        style={{
+                          fontSize: 20,
+                          fontWeight: 'bold',
+                          color: colors.white,
+                        }}>
                         I am Daniel
                       </Text>
                     </View>
@@ -263,7 +309,7 @@ const PhrasesScreen = () => {
 
                   <View
                     style={{
-                      backgroundColor: '#F7F8FB',
+                      backgroundColor: colors.phraseTranslate,
                       borderTopWidth: 1,
                       borderTopColor: '#E5E6E8',
                       flexDirection: 'row',
@@ -280,7 +326,9 @@ const PhrasesScreen = () => {
                         alignItems: 'center',
                       }}>
                       <ItIcons style={{marginRight: 10}} />
-                      <Text style={{fontSize: 20}}>lo sono Daniel</Text>
+                      <Text style={{fontSize: 20, color: colors.phraseText}}>
+                        lo sono Daniel
+                      </Text>
                     </View>
                     <View>
                       <SoundIcon />
@@ -288,7 +336,7 @@ const PhrasesScreen = () => {
                   </View>
                 </View>
               </View>
-              <View style={{backgroundColor: '#EBF0F6'}}>
+              <View style={{backgroundColor: colors.greetBack}}>
                 <View
                   style={{
                     marginVertical: 15,
@@ -307,10 +355,16 @@ const PhrasesScreen = () => {
                       justifyContent: 'space-between',
                       paddingVertical: 13,
                       paddingHorizontal: 10,
+                      backgroundColor: colors.blocks,
                     }}>
                     <View style={{flexDirection: 'row', alignItems: 'center'}}>
                       <EngIcon style={{marginRight: 10}} />
-                      <Text style={{fontSize: 20, fontWeight: 'bold'}}>
+                      <Text
+                        style={{
+                          fontSize: 20,
+                          fontWeight: 'bold',
+                          color: colors.white,
+                        }}>
                         I am Daniel
                       </Text>
                     </View>
@@ -321,7 +375,7 @@ const PhrasesScreen = () => {
 
                   <View
                     style={{
-                      backgroundColor: '#F7F8FB',
+                      backgroundColor: colors.phraseTranslate,
                       borderTopWidth: 1,
                       borderTopColor: '#E5E6E8',
                       flexDirection: 'row',
@@ -338,7 +392,9 @@ const PhrasesScreen = () => {
                         alignItems: 'center',
                       }}>
                       <ItIcons style={{marginRight: 10}} />
-                      <Text style={{fontSize: 20}}>lo sono Daniel</Text>
+                      <Text style={{fontSize: 20, color: colors.phraseText}}>
+                        lo sono Daniel
+                      </Text>
                     </View>
                     <View>
                       <SoundIcon />

@@ -2,7 +2,7 @@ import React from 'react';
 import {Text, View} from 'react-native';
 import MenuScreen from './MenuScreen.tsx';
 import PlansScreen from './PlansScreen.tsx';
-import TestScreen from './TestScreen.tsx';
+import TestScreen from './LanguageSelection.tsx';
 import ConversationScreen from './ConversationScreen.tsx';
 import {NavigationContainer} from '@react-navigation/native';
 import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';

@@ -5,10 +5,12 @@ import ItIcons from '../../assets/ItIcons.tsx';
 import SoundIcon from '../../assets/SoundIcon.tsx';
 import MicroIcon from '../../assets/MicroIcon.tsx';
 import MicroIcon2 from '../../assets/MicroIcon2.tsx';
+import {useTheme} from '@react-navigation/native';
 
 const ConversationSpeek = () => {
+  const {colors} = useTheme();
   return (
-    <View style={{flex: 1}}>
+    <View style={{flex: 1, backgroundColor: colors.themeColor}}>
       <ScrollView>
         <View
           style={{
@@ -19,7 +21,7 @@ const ConversationSpeek = () => {
             borderBottomStartRadius: 16,
             borderBottomEndRadius: 16,
             marginLeft: 50,
-            backgroundColor: 'white',
+            backgroundColor: colors.blocks,
           }}>
           <View
             style={{
@@ -31,7 +33,13 @@ const ConversationSpeek = () => {
             }}>
             <View style={{flexDirection: 'row', alignItems: 'center'}}>
               <EngIcon style={{marginRight: 10}} />
-              <Text style={{fontSize: 16, fontWeight: 'bold', width: '80%'}}>
+              <Text
+                style={{
+                  fontSize: 16,
+                  fontWeight: 'bold',
+                  width: '80%',
+                  color: colors.white,
+                }}>
                 I am Daniel Lorem ipsum dolor sit amet, consectetur adipiscing
                 elit.
               </Text>
@@ -57,7 +65,7 @@ const ConversationSpeek = () => {
                 alignItems: 'center',
               }}>
               <ItIcons style={{marginRight: 10}} />
-              <Text style={{fontSize: 16, width: '80%'}}>
+              <Text style={{fontSize: 16, width: '80%', color: colors.white}}>
                 Sono Daniel Lorem ipsum dolor sit amet, consectetur adipiscing
                 elit.
               </Text>
@@ -74,7 +82,7 @@ const ConversationSpeek = () => {
             marginLeft: 20,
             borderRadius: 5,
             marginRight: 50,
-            backgroundColor: '#B9D9FF',
+            backgroundColor: colors.convAnswer,
           }}>
           <View
             style={{
@@ -86,7 +94,13 @@ const ConversationSpeek = () => {
             }}>
             <View style={{flexDirection: 'row', alignItems: 'center'}}>
               <EngIcon style={{marginRight: 10}} />
-              <Text style={{fontSize: 16, fontWeight: 'bold', width: '80%'}}>
+              <Text
+                style={{
+                  fontSize: 16,
+                  fontWeight: 'bold',
+                  width: '80%',
+                  color: colors.white,
+                }}>
                 I am Daniel Lorem ipsum dolor sit amet, consectetur adipiscing
                 elit.
               </Text>
@@ -113,7 +127,7 @@ const ConversationSpeek = () => {
                 alignItems: 'center',
               }}>
               <ItIcons style={{marginRight: 10}} />
-              <Text style={{fontSize: 16, width: '80%'}}>
+              <Text style={{fontSize: 16, width: '80%', color: colors.white}}>
                 Sono Daniel Lorem ipsum dolor sit amet, consectetur adipiscing
                 elit.
               </Text>
@@ -129,7 +143,7 @@ const ConversationSpeek = () => {
             bottom: 0,
             left: 0,
             right: 0,
-            backgroundColor: 'white',
+            backgroundColor: colors.blocks,
             padding: 20,
             paddingVertical: 20,
             borderTopWidth: 1,

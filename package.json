@@ -20,6 +20,7 @@
     "pod-install": "^0.2.0",
     "react": "18.2.0",
     "react-native": "0.73.5",
+    "react-native-appearance": "^0.3.4",
     "react-native-elements": "^3.4.3",
     "react-native-gesture-handler": "^2.15.0",
     "react-native-linear-gradient": "^2.8.3",

@@ -5,6 +5,7 @@ import {SafeAreaProvider} from 'react-native-safe-area-context';
 import 'react-native-gesture-handler';
 import {GestureHandlerRootView} from 'react-native-gesture-handler';
 import {BottomSheetModalProvider} from '@gorhom/bottom-sheet';
+import Colors from './src/Themes/Colors.tsx';
 const App: FC = (): React.JSX.Element => {
   return (
     <SafeAreaProvider>

@@ -7,11 +7,25 @@ import EngIcon from '../../assets/EngIcon.tsx';
 import PenIcon from '../../assets/PenIcon.tsx';
 import ItIcons from '../../assets/ItIcons.tsx';
 import SoundIcon from '../../assets/SoundIcon.tsx';
+import {useTheme} from '@react-navigation/native';
 
 const HistoryFavourite = () => {
+  const {colors} = useTheme();
+
   return (
-    <View style={{marginHorizontal: 20}}>
-      <Text style={{marginTop: 20, fontSize: 20, fontWeight: 'bold'}}>
+    <View
+      style={{
+        paddingHorizontal: 20,
+        backgroundColor: colors.themeColor,
+        flex: 1,
+      }}>
+      <Text
+        style={{
+          marginTop: 20,
+          fontSize: 20,
+          fontWeight: 'bold',
+          color: colors.white,
+        }}>
         Favourites
       </Text>
       <ScrollView>
@@ -28,10 +42,17 @@ const HistoryFavourite = () => {
               justifyContent: 'space-between',
               paddingVertical: 13,
               paddingHorizontal: 10,
+              backgroundColor: colors.blocks,
             }}>
             <View style={{flexDirection: 'row', alignItems: 'center'}}>
               <EngIcon style={{marginRight: 10}} />
-              <Text style={{fontSize: 16, fontWeight: 'bold', width: '85%'}}>
+              <Text
+                style={{
+                  fontSize: 16,
+                  fontWeight: 'bold',
+                  width: '85%',
+                  color: colors.white,
+                }}>
                 I am Daniel
               </Text>
             </View>
@@ -42,7 +63,7 @@ const HistoryFavourite = () => {
 
           <View
             style={{
-              backgroundColor: '#F7F8FB',
+              backgroundColor: colors.phraseTranslate,
               borderTopWidth: 1,
               borderTopColor: '#E5E6E8',
               flexDirection: 'row',
@@ -59,7 +80,10 @@ const HistoryFavourite = () => {
                 alignItems: 'center',
               }}>
               <ItIcons style={{marginRight: 10}} />
-              <Text style={{fontSize: 16, width: '85%'}}>lo sono Daniel</Text>
+              <Text
+                style={{fontSize: 16, width: '85%', color: colors.phraseText}}>
+                lo sono Daniel
+              </Text>
             </View>
             <View>
               <SoundIcon />
@@ -79,10 +103,17 @@ const HistoryFavourite = () => {
               justifyContent: 'space-between',
               paddingVertical: 13,
               paddingHorizontal: 10,
+              backgroundColor: colors.blocks,
             }}>
             <View style={{flexDirection: 'row', alignItems: 'center'}}>
               <EngIcon style={{marginRight: 10}} />
-              <Text style={{fontSize: 16, fontWeight: 'bold', width: '85%'}}>
+              <Text
+                style={{
+                  fontSize: 16,
+                  fontWeight: 'bold',
+                  width: '85%',
+                  color: colors.white,
+                }}>
                 I am Daniel
               </Text>
             </View>
@@ -93,7 +124,7 @@ const HistoryFavourite = () => {
 
           <View
             style={{
-              backgroundColor: '#F7F8FB',
+              backgroundColor: colors.phraseTranslate,
               borderTopWidth: 1,
               borderTopColor: '#E5E6E8',
               flexDirection: 'row',
@@ -110,7 +141,10 @@ const HistoryFavourite = () => {
                 alignItems: 'center',
               }}>
               <ItIcons style={{marginRight: 10}} />
-              <Text style={{fontSize: 16, width: '85%'}}>lo sono Daniel</Text>
+              <Text
+                style={{fontSize: 16, width: '85%', color: colors.phraseText}}>
+                lo sono Daniel
+              </Text>
             </View>
             <View>
               <SoundIcon />
@@ -130,10 +164,17 @@ const HistoryFavourite = () => {
               justifyContent: 'space-between',
               paddingVertical: 13,
               paddingHorizontal: 10,
+              backgroundColor: colors.blocks,
             }}>
             <View style={{flexDirection: 'row', alignItems: 'center'}}>
               <EngIcon style={{marginRight: 10}} />
-              <Text style={{fontSize: 16, fontWeight: 'bold', width: '85%'}}>
+              <Text
+                style={{
+                  fontSize: 16,
+                  fontWeight: 'bold',
+                  width: '85%',
+                  color: colors.white,
+                }}>
                 I am Daniel
               </Text>
             </View>
@@ -144,7 +185,7 @@ const HistoryFavourite = () => {
 
           <View
             style={{
-              backgroundColor: '#F7F8FB',
+              backgroundColor: colors.phraseTranslate,
               borderTopWidth: 1,
               borderTopColor: '#E5E6E8',
               flexDirection: 'row',
@@ -161,13 +202,17 @@ const HistoryFavourite = () => {
                 alignItems: 'center',
               }}>
               <ItIcons style={{marginRight: 10}} />
-              <Text style={{fontSize: 16, width: '85%'}}>lo sono Daniel</Text>
+              <Text
+                style={{fontSize: 16, width: '85%', color: colors.phraseText}}>
+                lo sono Daniel
+              </Text>
             </View>
             <View>
               <SoundIcon />
             </View>
           </View>
         </View>
+
         <View
           style={{
             marginVertical: 15,
@@ -181,10 +226,17 @@ const HistoryFavourite = () => {
               justifyContent: 'space-between',
               paddingVertical: 13,
               paddingHorizontal: 10,
+              backgroundColor: colors.blocks,
             }}>
             <View style={{flexDirection: 'row', alignItems: 'center'}}>
               <EngIcon style={{marginRight: 10}} />
-              <Text style={{fontSize: 16, fontWeight: 'bold', width: '85%'}}>
+              <Text
+                style={{
+                  fontSize: 16,
+                  fontWeight: 'bold',
+                  width: '85%',
+                  color: colors.white,
+                }}>
                 I am Daniel
               </Text>
             </View>
@@ -195,7 +247,7 @@ const HistoryFavourite = () => {
 
           <View
             style={{
-              backgroundColor: '#F7F8FB',
+              backgroundColor: colors.phraseTranslate,
               borderTopWidth: 1,
               borderTopColor: '#E5E6E8',
               flexDirection: 'row',
@@ -212,7 +264,10 @@ const HistoryFavourite = () => {
                 alignItems: 'center',
               }}>
               <ItIcons style={{marginRight: 10}} />
-              <Text style={{fontSize: 16, width: '85%'}}>lo sono Daniel</Text>
+              <Text
+                style={{fontSize: 16, width: '85%', color: colors.phraseText}}>
+                lo sono Daniel
+              </Text>
             </View>
             <View>
               <SoundIcon />
