@@ -7,7 +7,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { Platform, StyleSheet, Text, TouchableOpacity } from 'react-native';
 
-import { useNavigation } from '@react-navigation/native';
+import {useNavigation, useTheme} from '@react-navigation/native';
 import PlansScreen from './PlansScreen.tsx';
 import TranslateScreen from './TranslateScreen.tsx';
 import HistoryScreen from './HistoryScreen.tsx';
@@ -25,7 +25,8 @@ const Tab = createBottomTabNavigator();
 
 function MainTabs(props) {
   const navigation = useNavigation();
-  console.log('navigation', props);
+  const {colors} = useTheme();
+  console.log('navigation', colors);
   return (
     <Tab.Navigator
       initialRouteName={props.route && props.route.params && props.route.params.params ? props.route.params.params : 'Plans'}
@@ -43,17 +44,28 @@ function MainTabs(props) {
           }
           return iconComponent;
         },
+        tabBarStyle: {
+          backgroundColor: colors.blocks,
+        },
       })}
+
     >
       <Tab.Screen name="Plans" component={PlansScreen} options={{
         tabBarLabel:'Plans',
+        tabBarLabelStyle: { color: colors.white },
         title:'Plans',
         headerShown:true,
-
+        headerStyle: {
+          backgroundColor: '#007AFD',
+        },
+        headerTitleStyle: {
+          color: 'white',
+        },
+        headerTitleAlign: 'center',
         headerLeft:() =>{
           return (
             <TouchableOpacity style={{paddingLeft:10}} onPress={() => navigation.openDrawer()}>
-              <BurgerIcon />
+              <BurgerIcon color={'white'}/>
             </TouchableOpacity>
           );
         },
@@ -62,11 +74,17 @@ function MainTabs(props) {
         tabBarLabel:'Translate',
         title:'Translate',
         headerShown:true,
-
+        tabBarLabelStyle: { color: colors.white },
+        headerStyle: {
+          backgroundColor: colors.themeColor,
+        },
+        headerTitleStyle: {
+          color: colors.white,
+        },
         headerLeft:() =>{
           return (
             <TouchableOpacity style={{paddingLeft:10}} onPress={() => navigation.openDrawer()}>
-              <BurgerIcon/>
+              <BurgerIcon color={colors.white}/>
             </TouchableOpacity>
           );
         },
@@ -89,7 +107,7 @@ function MainTabs(props) {
             <MicroIcon
               width={size + 15}
               height={size + 15}
-              borderColor={'#EBF0F6'}
+              borderColor={colors.themeColor}
             />
           ),
         }}
@@ -97,12 +115,18 @@ function MainTabs(props) {
       <Tab.Screen name="Phrases" component={PhrasesScreen} options={{
         tabBarLabel:'Phrases',
         title:'Phrases',
+        tabBarLabelStyle: { color: colors.white },
         headerShown:true,
-
+        headerStyle: {
+          backgroundColor: colors.themeColor,
+        },
+        headerTitleStyle: {
+          color: colors.white,
+        },
         headerLeft:() =>{
           return (
             <TouchableOpacity style={{paddingLeft:10}} onPress={() => navigation.openDrawer()}>
-              <BurgerIcon/>
+              <BurgerIcon color={colors.white}/>
             </TouchableOpacity>
           );
         },
@@ -110,12 +134,18 @@ function MainTabs(props) {
       <Tab.Screen name="History" component={HistoryScreen}  options={{
         tabBarLabel: 'History',
         title:'History',
+        tabBarLabelStyle: { color: colors.white },
         headerShown:true,
-
+        headerStyle: {
+          backgroundColor: colors.themeColor,
+        },
+        headerTitleStyle: {
+          color: colors.white,
+        },
         headerLeft:() =>{
           return (
             <TouchableOpacity style={{paddingLeft:10}} onPress={() => navigation.openDrawer()}>
-              <BurgerIcon/>
+              <BurgerIcon color={colors.white}/>
             </TouchableOpacity>
           );
         },

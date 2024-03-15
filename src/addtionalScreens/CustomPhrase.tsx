@@ -70,7 +70,7 @@ const CustomPhrase = ({bottomSheetRef}) => {
             <TextInput
               style={{
                 fontSize: 16,
-                color: '#1A1E2B',
+                color: colors.white,
                 height: 80,
                 borderRadius: 8,
               }}

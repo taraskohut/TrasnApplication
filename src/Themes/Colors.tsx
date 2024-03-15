@@ -14,6 +14,7 @@ const light = {
     greetBack: '#EBF0F6',
     popUpBack: '#EBF0F6',
     popUpTransBack: '#F2F4F9',
+    iconsCol: '#535763',
   },
 };
 
@@ -33,6 +34,7 @@ const dark = {
     greetBack: '#464858',
     popUpBack: '#585966',
     popUpTransBack: '#3E4050',
+    iconsCol: '#9AA2B9',
   },
 };
 

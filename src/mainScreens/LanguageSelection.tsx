@@ -14,25 +14,23 @@ const Tab = createMaterialTopTabNavigator();
 const LanguageSelection = ({currentTheme, handleToggleTheme}) => {
   const {colors} = useTheme();
   return (
-    <Tab.Navigator>
-      <Tab.Screen name="From" component={FromLang}>
-        {/*{props => (*/}
-        {/*  <FromLang*/}
-        {/*    {...props}*/}
-        {/*    currentTheme={currentTheme}*/}
-        {/*    handleToggleTheme={handleToggleTheme}*/}
-        {/*  />*/}
-        {/*)}*/}
-      </Tab.Screen>
-      <Tab.Screen name="To">
-        {props => (
-          <FromLang
-            {...props}
-            currentTheme={currentTheme}
-            handleToggleTheme={handleToggleTheme}
-          />
-        )}
-      </Tab.Screen>
+    <Tab.Navigator
+      screenOptions={{
+        tabBarStyle: {
+          backgroundColor: colors.themeColor,
+          borderBottomWidth: 1,
+        },
+        tabBarLabelStyle: {
+          color: colors.white,
+        },
+        tabBarActiveTintColor: '#007AFD',
+        tabBarIndicatorStyle: {
+          backgroundColor: '#007AFD',
+          paddingHorizontal: 30,
+        },
+      }}>
+      <Tab.Screen name="From" component={FromLang} />
+      <Tab.Screen name="To" component={ToLang} />
     </Tab.Navigator>
   );
 };

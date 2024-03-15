@@ -12,7 +12,12 @@ const FromLang = () => {
   const {colors} = useTheme();
   console.log('aaaaaa', colors);
   return (
-    <View style={{paddingHorizontal: 20, backgroundColor: colors.themeColor}}>
+    <View
+      style={{
+        flex: 1,
+        paddingHorizontal: 20,
+        backgroundColor: colors.themeColor,
+      }}>
       <View
         style={{
           marginVertical: 20,

@@ -1,15 +1,19 @@
 import React from 'react';
 import {createDrawerNavigator} from '@react-navigation/drawer';
-import {Dimensions, View} from 'react-native';
+import {Dimensions, StatusBar, View} from 'react-native';
 import MainTabs from './MainTabs.tsx';
 import TicketIcon from '../../assets/TicketIcon.tsx';
 import TranslateIcon from '../../assets/TranslateIcon.tsx';
 import PhrasesIcon from '../../assets/PhrasesIcon.tsx';
 import HistoryIcon from '../../assets/HistoryIcon.tsx';
 import CustomDrawer from '../addtionalScreens/CustomDrawer.tsx';
+import {useTheme} from '@react-navigation/native';
 const Drawer = createDrawerNavigator();
 
-const MenuScreen = () => {
+const MenuScreen = ({navigation, route}) => {
+  const {colors} = useTheme();
+  console.log('ddddd', route);
+  // StatusBar.setBarStyle('red');
   return (
     <Drawer.Navigator
       drawerContent={props => <CustomDrawer {...props} />}
@@ -19,10 +23,14 @@ const MenuScreen = () => {
         drawerActiveTintColor: '#fff',
         drawerStyle: {
           width: Dimensions.get('window').width / 1.15,
+          backgroundColor: colors.blocks,
         },
         drawerLabelStyle: {
           marginLeft: -25,
         },
+        // drawerContentStyle: {
+        //   backgroundColor: '',
+        // },
       }}>
       <Drawer.Screen
         name={'Plans'}
@@ -31,8 +39,12 @@ const MenuScreen = () => {
         options={{
           title: 'Plans',
           drawerIcon: ({focused, color, size}) => (
-            <TicketIcon focused={focused ? 'white' : 'black'} />
+            <TicketIcon focused={focused ? 'white' : colors.iconsCol} />
           ),
+          drawerLabelStyle: {
+            color: colors.white,
+            marginLeft: -25,
+          },
         }}
       />
 
@@ -43,8 +55,12 @@ const MenuScreen = () => {
         options={{
           title: 'Translate',
           drawerIcon: ({focused, color, size}) => (
-            <TranslateIcon focused={focused ? 'white' : 'black'} />
+            <TranslateIcon focused={focused ? 'white' : colors.iconsCol} />
           ),
+          drawerLabelStyle: {
+            color: colors.white,
+            marginLeft: -25,
+          },
         }}
       />
 
@@ -55,8 +71,12 @@ const MenuScreen = () => {
         options={{
           title: 'Phrases',
           drawerIcon: ({focused, color, size}) => (
-            <PhrasesIcon focused={focused ? 'white' : 'black'} />
+            <PhrasesIcon focused={focused ? 'white' : colors.iconsCol} />
           ),
+          drawerLabelStyle: {
+            color: colors.white,
+            marginLeft: -25,
+          },
         }}
       />
 
@@ -67,8 +87,12 @@ const MenuScreen = () => {
         options={{
           title: 'History',
           drawerIcon: ({focused, color, size}) => (
-            <HistoryIcon focused={focused ? 'white' : 'black'} />
+            <HistoryIcon focused={focused ? 'white' : colors.iconsCol} />
           ),
+          drawerLabelStyle: {
+            color: colors.white,
+            marginLeft: -25,
+          },
         }}
       />
     </Drawer.Navigator>

@@ -2,7 +2,7 @@ import {
   DrawerContentScrollView,
   DrawerItemList,
 } from '@react-navigation/drawer';
-import React from 'react';
+import React, {useState} from 'react';
 import {
   Dimensions,
   ImageBackground,
@@ -19,16 +19,22 @@ import SupportIcon from '../../assets/SupportIcon.tsx';
 import MoveIcon from '../../assets/MoveIcon.tsx';
 import LogOutIcon from '../../assets/LogOutIcon.tsx';
 import LightModeIcon from '../../assets/LightModeIcon.tsx';
+import {useTheme} from '@react-navigation/native';
+import {useThemeContext} from './ThemeContext.tsx';
+import DarkModeIcon from '../../assets/DarkModeIcon.tsx';
 
 const {width, height} = Dimensions.get('screen');
 
 const CustomDrawer = props => {
+  const {currentTheme: currentTheme2, toggleTheme} = useThemeContext();
+  console.log(currentTheme2);
+  const {colors} = useTheme();
   return (
     <DrawerContentScrollView {...props} contentContainerStyle={{flex: 1}}>
       <View
         style={{
-          flexDirection: 'column',
           flex: 1,
+          backgroundColor: colors.blocks,
         }}>
         <ImageBackground
           source={require('../../assets/basic.png')}
@@ -40,13 +46,14 @@ const CustomDrawer = props => {
           }}>
           <View style={{marginTop: '10%'}}>
             <View style={{flexDirection: 'row', alignItems: 'center'}}>
-              <Text style={{fontSize: 25, fontWeight: '500'}}>
+              <Text
+                style={{fontSize: 25, fontWeight: '500', color: colors.white}}>
                 Ciao, Daniel!
               </Text>
               <Text style={{fontSize: 28, marginLeft: 10}}>👋</Text>
             </View>
             <View style={{flexDirection: 'row', alignItems: 'center', gap: 10}}>
-              <Text>Translate Basic</Text>
+              <Text style={{color: colors.white}}>Translate Basic</Text>
               <View
                 style={{
                   width: 4,
@@ -61,22 +68,33 @@ const CustomDrawer = props => {
               <View
                 style={{flexDirection: 'row', alignItems: 'center', gap: 5}}>
                 <CoinIcon size={20} />
-                <Text style={{fontWeight: '700'}}>200</Text>
+                <Text style={{fontWeight: '700', color: colors.white}}>
+                  200
+                </Text>
               </View>
             </View>
           </View>
-          <View
+          <TouchableOpacity
+            onPress={toggleTheme}
             style={{
               position: 'absolute',
               width: 60,
               height: 32,
               left: 258,
               top: '10%',
-              backgroundColor: '#FFFFFF',
+              backgroundColor: colors.themeColor,
               borderRadius: 36,
             }}>
-            <LightModeIcon />
-          </View>
+            {currentTheme2 === 'light' ? (
+              <View style={{marginTop: 5}}>
+                <LightModeIcon />
+              </View>
+            ) : (
+              <View style={{marginLeft: 35, marginTop: 5}}>
+                <DarkModeIcon />
+              </View>
+            )}
+          </TouchableOpacity>
         </ImageBackground>
 
         <View style={styles.drawerListWrapper}>
@@ -93,7 +111,9 @@ const CustomDrawer = props => {
             }}>
             <View style={{flexDirection: 'row', alignItems: 'center', gap: 10}}>
               <TermsIcon />
-              <Text style={{fontSize: 18}}>Terms of Service</Text>
+              <Text style={{fontSize: 18, color: colors.white}}>
+                Terms of Service
+              </Text>
             </View>
             <MoveIcon />
           </View>
@@ -106,7 +126,9 @@ const CustomDrawer = props => {
             }}>
             <View style={{flexDirection: 'row', alignItems: 'center', gap: 10}}>
               <PrivacyIcon />
-              <Text style={{fontSize: 18}}>Privacy Policy</Text>
+              <Text style={{fontSize: 18, color: colors.white}}>
+                Privacy Policy
+              </Text>
             </View>
             <MoveIcon />
           </View>
@@ -119,13 +141,13 @@ const CustomDrawer = props => {
             }}>
             <View style={{flexDirection: 'row', alignItems: 'center', gap: 10}}>
               <SupportIcon />
-              <Text style={{fontSize: 18}}>Support</Text>
+              <Text style={{fontSize: 18, color: colors.white}}>Support</Text>
             </View>
             <MoveIcon />
           </View>
         </View>
       </View>
-      <TouchableOpacity>
+      <TouchableOpacity style={{backgroundColor: colors.blocks}}>
         <View
           style={{
             alignItems: 'center',

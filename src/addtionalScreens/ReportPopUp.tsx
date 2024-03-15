@@ -8,10 +8,12 @@ import {useMemo, useRef, useCallback, useState} from 'react';
 import BottomSheet, {BottomSheetModal} from '@gorhom/bottom-sheet';
 import ItIcons from '../../assets/ItIcons.tsx';
 import ErrorIcon from '../../assets/ErrorIcon.tsx';
+import {useTheme} from '@react-navigation/native';
 
 const ReportPopUp = ({bottomSheetRef}) => {
   const handleClosePress = () => bottomSheetRef.current?.close();
   const [openModal, setOpenModal] = useState(false);
+  const {colors} = useTheme();
   const handleSubmit = () => {
     setOpenModal(true);
   };
@@ -31,7 +33,7 @@ const ReportPopUp = ({bottomSheetRef}) => {
 
   return (
     <BottomSheet
-      backgroundStyle={{backgroundColor: '#EBF0F6'}}
+      backgroundStyle={{backgroundColor: colors.popUpBack}}
       backdropComponent={renderBackdrop}
       ref={bottomSheetRef}
       index={0}
@@ -44,36 +46,44 @@ const ReportPopUp = ({bottomSheetRef}) => {
             marginBottom: 20,
             fontWeight: 'bold',
             marginHorizontal: 20,
+            color: colors.white,
           }}>
           Report Inaccuracy
         </Text>
         <View
           style={{flexDirection: 'row', width: '85%', marginHorizontal: 20}}>
           <ItIcons />
-          <Text style={{marginLeft: 10, fontSize: 16}}>
+          <Text style={{marginLeft: 10, fontSize: 16, color: colors.white}}>
             “Ciao! ll mino nome e Dainel. E un piacere conoscerti!?
           </Text>
         </View>
         <View style={{marginHorizontal: 20}}>
-          <Text style={{fontSize: 20, marginVertical: 20, fontWeight: 'bold'}}>
+          <Text
+            style={{
+              fontSize: 20,
+              marginVertical: 20,
+              fontWeight: 'bold',
+              color: colors.white,
+            }}>
             What went wrong?
           </Text>
           <TextInput
             style={{
-              backgroundColor: 'white',
+              backgroundColor: colors.blocks,
               fontSize: 16,
-              color: '#1A1E2B',
+              color: colors.white,
               height: '50%',
               paddingHorizontal: 10,
               borderRadius: 8,
             }}
+            placeholderTextColor={colors.phraseText}
             multiline={true}
             placeholder={'Enter your text...'}
           />
         </View>
         <View
           style={{
-            backgroundColor: 'white',
+            backgroundColor: colors.blocks,
             flexDirection: 'row',
             justifyContent: 'space-between',
             paddingHorizontal: 20,
@@ -117,7 +127,7 @@ const ReportPopUp = ({bottomSheetRef}) => {
           }}>
           <View
             style={{
-              backgroundColor: 'white',
+              backgroundColor: colors.blocks,
               padding: 20,
               paddingVertical: 50,
               borderRadius: 16,
@@ -126,10 +136,18 @@ const ReportPopUp = ({bottomSheetRef}) => {
             <View style={{marginBottom: 20}}>
               <ErrorIcon />
             </View>
-            <Text style={{fontSize: 20, fontWeight: 'bold', marginBottom: 10}}>
+            <Text
+              style={{
+                fontSize: 20,
+                fontWeight: 'bold',
+                marginBottom: 10,
+                color: colors.white,
+              }}>
               Report Error!
             </Text>
-            <Text>Oops, something went wrong. Please try again.</Text>
+            <Text style={{color: colors.white}}>
+              Oops, something went wrong. Please try again.
+            </Text>
             <View style={{flexDirection: 'row'}}>
               <TouchableOpacity
                 onPress={() => setOpenModal(false)}
