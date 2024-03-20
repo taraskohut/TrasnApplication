@@ -8,11 +8,13 @@ import PhrasesIcon from '../../assets/PhrasesIcon.tsx';
 import HistoryIcon from '../../assets/HistoryIcon.tsx';
 import CustomDrawer from '../addtionalScreens/CustomDrawer.tsx';
 import {useTheme} from '@react-navigation/native';
+import {useThemeContext} from '../addtionalScreens/ThemeContext.tsx';
 const Drawer = createDrawerNavigator();
 
 const MenuScreen = ({navigation, route}) => {
+  const {currentTheme: currentTheme2, toggleTheme} = useThemeContext();
   const {colors} = useTheme();
-  console.log('ddddd', route);
+  console.log('ddddd', currentTheme2);
   // StatusBar.setBarStyle('red');
   return (
     <Drawer.Navigator
@@ -20,7 +22,7 @@ const MenuScreen = ({navigation, route}) => {
       screenOptions={{
         headerShown: false,
         drawerActiveBackgroundColor: '#007AFD',
-        drawerActiveTintColor: '#fff',
+        drawerActiveTintColor: '#fffff',
         drawerStyle: {
           width: Dimensions.get('window').width / 1.15,
           backgroundColor: colors.blocks,
@@ -41,6 +43,7 @@ const MenuScreen = ({navigation, route}) => {
           drawerIcon: ({focused, color, size}) => (
             <TicketIcon focused={focused ? 'white' : colors.iconsCol} />
           ),
+
           drawerLabelStyle: {
             color: colors.white,
             marginLeft: -25,

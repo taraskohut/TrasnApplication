@@ -5,7 +5,7 @@ import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 import Icon from 'react-native-vector-icons/Ionicons';
-import { Platform, StyleSheet, Text, TouchableOpacity } from 'react-native';
+import {Platform, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 
 import {useNavigation, useTheme} from '@react-navigation/native';
 import PlansScreen from './PlansScreen.tsx';
@@ -19,14 +19,16 @@ import HistoryIcon from '../../assets/HistoryIcon.tsx';
 import MicroIcon from '../../assets/MicroIcon.tsx';
 import conversationScreen from './ConversationScreen.tsx';
 import BurgerIcon from '../../assets/BurgerIcon.tsx';
+import {useThemeContext} from '../addtionalScreens/ThemeContext.tsx';
+import CoinIcon from '../../assets/CoinIcon.tsx';
 Icon.loadFont();
 
 const Tab = createBottomTabNavigator();
 
 function MainTabs(props) {
   const navigation = useNavigation();
+
   const {colors} = useTheme();
-  console.log('navigation', colors);
   return (
     <Tab.Navigator
       initialRouteName={props.route && props.route.params && props.route.params.params ? props.route.params.params : 'Plans'}
@@ -67,6 +69,16 @@ function MainTabs(props) {
             <TouchableOpacity style={{paddingLeft:10}} onPress={() => navigation.openDrawer()}>
               <BurgerIcon color={'white'}/>
             </TouchableOpacity>
+          );
+        },
+        headerRight:() => {
+          return (
+          <>
+            <View style={{flexDirection: 'row', marginLeft: '60%', alignItems: 'center'}}>
+              <Text style={{color: 'white', fontWeight: 800, marginRight: -15}}>200</Text>
+              <CoinIcon/>
+            </View>
+          </>
           );
         },
       }} />

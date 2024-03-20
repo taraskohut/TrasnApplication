@@ -1,5 +1,5 @@
 import React from 'react';
-import {Text, View, ScrollView} from 'react-native';
+import {Text, View, ScrollView, TouchableOpacity} from 'react-native';
 import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
 import MenuScreen from './MenuScreen.tsx';
 import PlansScreen from './PlansScreen.tsx';
@@ -8,6 +8,7 @@ import PenIcon from '../../assets/PenIcon.tsx';
 import ItIcons from '../../assets/ItIcons.tsx';
 import SoundIcon from '../../assets/SoundIcon.tsx';
 import {useTheme} from '@react-navigation/native';
+import HeartIcon from '../../assets/HeartIcon.tsx';
 
 const HistoryFavourite = () => {
   const {colors} = useTheme();
@@ -57,7 +58,7 @@ const HistoryFavourite = () => {
               </Text>
             </View>
             <View>
-              <PenIcon />
+              <HeartIcon />
             </View>
           </View>
 
@@ -118,7 +119,7 @@ const HistoryFavourite = () => {
               </Text>
             </View>
             <View>
-              <PenIcon />
+              <HeartIcon />
             </View>
           </View>
 
@@ -179,7 +180,7 @@ const HistoryFavourite = () => {
               </Text>
             </View>
             <View>
-              <PenIcon />
+              <HeartIcon />
             </View>
           </View>
 
@@ -240,9 +241,11 @@ const HistoryFavourite = () => {
                 I am Daniel
               </Text>
             </View>
-            <View>
-              <PenIcon />
-            </View>
+            <TouchableOpacity>
+              <View>
+                <HeartIcon />
+              </View>
+            </TouchableOpacity>
           </View>
 
           <View

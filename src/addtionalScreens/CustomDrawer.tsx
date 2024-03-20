@@ -22,13 +22,17 @@ import LightModeIcon from '../../assets/LightModeIcon.tsx';
 import {useTheme} from '@react-navigation/native';
 import {useThemeContext} from './ThemeContext.tsx';
 import DarkModeIcon from '../../assets/DarkModeIcon.tsx';
-
+import {useNavigation} from '@react-navigation/native';
 const {width, height} = Dimensions.get('screen');
 
 const CustomDrawer = props => {
   const {currentTheme: currentTheme2, toggleTheme} = useThemeContext();
   console.log(currentTheme2);
   const {colors} = useTheme();
+  const navigation = useNavigation();
+  const handleGoBack = () => {
+    navigation.goBack();
+  };
   return (
     <DrawerContentScrollView {...props} contentContainerStyle={{flex: 1}}>
       <View
@@ -147,7 +151,9 @@ const CustomDrawer = props => {
           </View>
         </View>
       </View>
-      <TouchableOpacity style={{backgroundColor: colors.blocks}}>
+      <TouchableOpacity
+        style={{backgroundColor: colors.blocks}}
+        onPress={handleGoBack}>
         <View
           style={{
             alignItems: 'center',

@@ -10,8 +10,10 @@ import SoundIcon from '../../assets/SoundIcon.tsx';
 import MicroIcon2 from '../../assets/MicroIcon2.tsx';
 import {useTheme} from '@react-navigation/native';
 import {color} from 'react-native-elements/dist/helpers';
+import {useThemeContext} from './ThemeContext.tsx';
 
 const CustomPhrase = ({bottomSheetRef}) => {
+  const {setInputPhrase, createPhrase, inputPhrase} = useThemeContext();
   const {colors} = useTheme();
   const snapPoints = useMemo(() => ['80%'], []);
   const renderBackdrop = useCallback(
@@ -77,6 +79,13 @@ const CustomPhrase = ({bottomSheetRef}) => {
               multiline={true}
               placeholderTextColor={colors.phraseText}
               placeholder={'Enter your text...'}
+              onChangeText={text =>
+                setInputPhrase(prevState => ({
+                  ...prevState,
+                  engPhrase: text,
+                  itPhrase: text.toUpperCase(),
+                }))
+              }
             />
           </View>
         </View>
@@ -110,8 +119,9 @@ const CustomPhrase = ({bottomSheetRef}) => {
                 fontSize: 16,
                 height: 80,
                 borderRadius: 8,
-              }}
-            />
+              }}>
+              {inputPhrase.itPhrase}
+            </Text>
           </View>
         </View>
         <View
@@ -163,7 +173,7 @@ const CustomPhrase = ({bottomSheetRef}) => {
             </Text>
           </View>
         </TouchableOpacity>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={createPhrase}>
           <View style={{backgroundColor: '#007AFD', borderRadius: 8}}>
             <Text
               style={{

@@ -1,4 +1,4 @@
-import React, {useRef} from 'react';
+import React, {useRef, useState} from 'react';
 import {ScrollView, Text, TouchableOpacity, View} from 'react-native';
 import PlusIcon from '../../assets/PlusIcon.tsx';
 import EngIcon from '../../assets/EngIcon.tsx';
@@ -14,11 +14,32 @@ import HeartIcon from '../../assets/HeartIcon.tsx';
 import BottomSheet, {BottomSheetModalProvider} from '@gorhom/bottom-sheet';
 import CustomPhrase from '../addtionalScreens/CustomPhrase.tsx';
 import {useTheme} from '@react-navigation/native';
+import {useThemeContext} from '../addtionalScreens/ThemeContext.tsx';
 
 const PhrasesScreen = () => {
+  const {phrase, setPhrase, fetchData} = useThemeContext();
+  console.log('hehe', phrase);
   const handleOpenPress = () => bottomSheetRef.current?.expand();
   const bottomSheetRef = useRef<BottomSheet>(null);
   const {colors} = useTheme();
+
+  const [phrases, setPhrases, inputPhrase] = useState([
+    {
+      id: 0,
+      phraseEng: "I'm Daniel",
+      phraseIt: 'la sono Daniel',
+    },
+    {
+      id: 1,
+      phraseEng: "I'm Daniel",
+      phraseIt: 'la sono Daniel',
+    },
+    {
+      id: 2,
+      phraseEng: "I'm Daniel",
+      phraseIt: 'la sono Daniel',
+    },
+  ]);
 
   return (
     <BottomSheetModalProvider>
@@ -52,6 +73,71 @@ const PhrasesScreen = () => {
               </TouchableOpacity>
             </View>
             <ScrollView />
+            {phrase.map((value, index) => (
+              <View
+                style={{
+                  marginVertical: 15,
+                  backgroundColor: 'white',
+                  borderRadius: 5,
+                }}>
+                <View
+                  style={{
+                    flexDirection: 'row',
+                    alignItems: 'center',
+                    justifyContent: 'space-between',
+                    paddingVertical: 13,
+                    paddingHorizontal: 10,
+                    backgroundColor: colors.blocks,
+                  }}>
+                  <View
+                    style={{
+                      flexDirection: 'row',
+                      alignItems: 'center',
+                    }}>
+                    <EngIcon style={{marginRight: 10}} />
+                    <Text
+                      style={{
+                        fontSize: 20,
+                        fontWeight: 'bold',
+                        color: colors.white,
+                      }}>
+                      {value.engPhrase}
+                    </Text>
+                  </View>
+                  <View>
+                    <PenIcon />
+                  </View>
+                </View>
+
+                <View
+                  style={{
+                    backgroundColor: colors.phraseTranslate,
+                    borderTopWidth: 1,
+                    borderTopColor: '#E5E6E8',
+                    flexDirection: 'row',
+                    borderBottomEndRadius: 5,
+                    borderBottomStartRadius: 5,
+                    justifyContent: 'space-between',
+                    alignItems: 'center',
+                    paddingVertical: 13,
+                    paddingHorizontal: 10,
+                  }}>
+                  <View
+                    style={{
+                      flexDirection: 'row',
+                      alignItems: 'center',
+                    }}>
+                    <ItIcons style={{marginRight: 10}} />
+                    <Text style={{fontSize: 20, color: colors.phraseText}}>
+                      {value.itPhrase}
+                    </Text>
+                  </View>
+                  <View>
+                    <SoundIcon />
+                  </View>
+                </View>
+              </View>
+            ))}
             <View
               style={{
                 marginVertical: 15,

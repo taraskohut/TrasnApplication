@@ -28,17 +28,9 @@ const MainContainer = () => {
 
   console.log(currentTheme2);
 
-  // const theme = useColorScheme();
-  // const [currentTheme, setCurrentTheme] = useState(theme);
   const {colors} = useTheme();
-  // const handleToggleTheme = () => {
-  //   const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-  //   setCurrentTheme(newTheme);
-  // };
-  // const ThemeContext = createContext(null);
-  // console.log('col', currentTheme);
+
   return (
-    // <ThemeContext.Provider theme={theme} currentTheme={currentTheme}>
     <NavigationContainer
       theme={currentTheme2 === 'dark' ? Colors.dark : Colors.light}>
       <Stack.Navigator initialRouteName="LoginScreen">
@@ -53,10 +45,8 @@ const MainContainer = () => {
           options={{
             headerShown: false,
           }}
-          // initialParams={{onToggleTheme: handleToggleTheme2}}
         />
         <Stack.Screen
-          // theme={currentTheme === 'dark' ? Colors.dark : Colors.light}
           name="Language Selection"
           component={LanguageSelection}
           options={{
@@ -80,7 +70,6 @@ const MainContainer = () => {
         />
       </Stack.Navigator>
     </NavigationContainer>
-    // </ThemeContext.Provider>
   );
 };
 
